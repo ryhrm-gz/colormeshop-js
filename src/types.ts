@@ -78,3 +78,8 @@ export type ColormeGetSalesRequest = {
   limit?: number;
   offset?: number;
 };
+
+export type ColormeGetSalesResponse = {
+  id: number;
+  account_id: string;
+};
