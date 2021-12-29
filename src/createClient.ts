@@ -1,6 +1,7 @@
 const axios = require("axios").default;
-import { ColormeClient } from ".";
+import { ColormeClient, ColormeGetSalesRequest } from ".";
 import { getShop } from "./utils/shop/getShop";
+import { getSales } from "./utils/sales/getSales";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   const client = axios.create({
@@ -11,6 +12,9 @@ export const createClient = ({ accessToken }: ColormeClient) => {
   const shop = {
     getShop: () => getShop(client),
   };
+  const sales = {
+    getSales: (query?: ColormeGetSalesRequest) => getSales(client, query),
+  };
 
-  return { shop };
+  return { shop, sales };
 };

@@ -1,4 +1,0 @@
-import { AxiosInstance } from "axios";
-import { apiUrl } from "../..";
-
-export const getSales = async (client: AxiosInstance) => {};
