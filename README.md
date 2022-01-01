@@ -26,8 +26,6 @@ CommonJS
 const { createClient } = require("colormeshop-js");
 ```
 
-or
-
 ES6
 
 ```javascript
