@@ -1,5 +1,5 @@
 export type ColormeError = {
-  status: number;
+  status?: number;
   error?: any;
   message: string;
 };
@@ -107,6 +107,27 @@ export type ColormeShopResponse = {
   };
 };
 
+export type ColormeSalesStatResponse = {
+  sales_stat: {
+    /** ショップアカウントID */
+    account_id?: string;
+    /** 集計対象とする売上の作成日 */
+    date?: number;
+    /** 合計売上金額 */
+    amount_today?: number;
+    /** 合計件数 */
+    count_today?: number;
+    /** `date`を含む過去7日間の合計売上金額 */
+    amount_last_7days?: number;
+    /** `date`を含む過去7日間の合計件数 */
+    count_last_7days?: number;
+    /** `date`が含まれる月の合計売上金額 */
+    amount_this_month?: number;
+    /** `date`が含まれる月の合計件数 */
+    count_this_month?: number;
+  };
+};
+
 export type ColormeGetSalesParams = {
   /** 受注IDで検索。カンマ区切りで複数指定可能 */
   ids?: string;
@@ -176,6 +197,11 @@ export type ColormeGetSalesParams = {
   limit?: number;
   /** 指定した数値+1件目以降のデータを返す */
   offset?: number;
+};
+
+export type ColormeGetStatParams = {
+  /** 集計対象とする売上の作成日。形式は"2017-04-12"、"2017/04/12"など。指定しない場合は今日の日付が使われる */
+  make_date?: string;
 };
 
 export type ColormeCustomerResponse = {

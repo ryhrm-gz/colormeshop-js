@@ -1,9 +1,15 @@
 const axios = require("axios").default;
-import { ColormeClient, ColormeGetSalesParams } from ".";
+import { ColormeClient, ColormeGetSalesParams, ColormeGetStatParams } from ".";
 import { getShop } from "./utils/shop/getShop";
 import { getSales } from "./utils/sales/getSales";
+import { getStat } from "./utils/sales/getStat";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
+  if (!accessToken) {
+    throw {
+      message: "Access token is required",
+    };
+  }
   const client = axios.create({
     baseURL: "https://api.shop-pro.jp/v1/",
     headers: {
@@ -14,7 +20,8 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     getShop: () => getShop(client),
   };
   const sales = {
-    getSales: (query?: ColormeGetSalesParams) => getSales(client, query),
+    getSales: (params?: ColormeGetSalesParams) => getSales(client, params),
+    getStat: (params?: ColormeGetStatParams) => getStat(client, params),
   };
 
   return { shop, sales };

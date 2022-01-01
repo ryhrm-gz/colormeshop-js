@@ -22,4 +22,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getStat
+  test.skip("getStat", async () => {
+    try {
+      await client.sales.getStat();
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });
