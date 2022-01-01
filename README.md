@@ -29,7 +29,7 @@ const { createClient } = require("colormeshop-js");
 ES6
 
 ```javascript
-import { createClient } from "colormeshop-js"; //ES6
+import { createClient } from "colormeshop-js";
 ```
 
 #### 2. Create a Client
