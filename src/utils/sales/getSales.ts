@@ -1,11 +1,15 @@
-import { AxiosInstance } from "axios";
+import { AxiosError, AxiosInstance } from "axios";
+import { errorHandler } from "../errorHandler";
 import { ColormeGetSalesRequest } from "../..";
-import { apiUrl } from "../..";
 
 export const getSales = async (
   client: AxiosInstance,
   query?: ColormeGetSalesRequest
 ) => {
-  const response = await client.get(`${apiUrl}/sales`, { params: query });
-  return response.data;
+  try {
+    const response = await client.get(`sales`, { params: query });
+    return response.data;
+  } catch (error: AxiosError | any) {
+    throw errorHandler(error);
+  }
 };

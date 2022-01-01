@@ -7,3 +7,4 @@ types
 package-lock.json
 test.js
 test.ts
+.env

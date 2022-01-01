@@ -1,3 +1,11 @@
+export type ColormeError = {
+  error: {
+    status: number;
+    error?: any;
+    message: string;
+  };
+};
+
 export type ColormeClient = {
   accessToken: string;
 };

@@ -5,6 +5,7 @@ import { getSales } from "./utils/sales/getSales";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   const client = axios.create({
+    baseURL: "https://api.shop-pro.jp/v1/",
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
