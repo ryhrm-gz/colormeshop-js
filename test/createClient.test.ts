@@ -11,7 +11,7 @@ describe("createClient", () => {
     try {
       await client.shop.getShop();
     } catch (error) {
-      console.log(error);
+      console.log(error.error);
     }
   });
   //getSales

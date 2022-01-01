@@ -1,11 +1,11 @@
 import { AxiosError, AxiosInstance } from "axios";
 import { errorHandler } from "../errorHandler";
-import { ColormeGetSalesRequest } from "../..";
+import { ColormeGetSalesParams, ColormeSaleResponse, ColormeMeta } from "../..";
 
 export const getSales = async (
   client: AxiosInstance,
-  query?: ColormeGetSalesRequest
-) => {
+  query?: ColormeGetSalesParams
+): Promise<{ sales: ColormeSaleResponse; meta: ColormeMeta }> => {
   try {
     const response = await client.get(`sales`, { params: query });
     return response.data;

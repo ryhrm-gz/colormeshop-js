@@ -6,7 +6,7 @@ export const getShop = async (
   client: AxiosInstance
 ): Promise<ColormeShopResponse> => {
   try {
-    const response = await client.get(`sop`);
+    const response = await client.get(`shop`);
     return response.data;
   } catch (error: AxiosError | any) {
     throw errorHandler(error);
