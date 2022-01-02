@@ -38,4 +38,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getCustomers
+  test.skip("getCustomers", async () => {
+    try {
+      console.log(await client.customers.getCustomers());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

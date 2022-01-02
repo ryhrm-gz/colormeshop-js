@@ -5,7 +5,7 @@ import { ColormeGetSalesParams, ColormeSaleResponse, ColormeMeta } from "../..";
 export const getSales = async (
   client: AxiosInstance,
   params?: ColormeGetSalesParams
-): Promise<{ sales: ColormeSaleResponse; meta: ColormeMeta }> => {
+): Promise<{ sales: ColormeSaleResponse[]; meta: ColormeMeta }> => {
   try {
     const response = await client.get("sales", { params });
     return response.data;

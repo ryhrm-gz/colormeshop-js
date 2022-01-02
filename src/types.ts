@@ -18,6 +18,12 @@ export type ColormeMeta = {
   offset?: number;
 };
 
+/*
+
+Response
+
+*/
+
 export type ColormeShopResponse = {
   shop: {
     /** ショップアカウントID */
@@ -126,87 +132,6 @@ export type ColormeSalesStatResponse = {
     /** `date`が含まれる月の合計件数 */
     count_this_month?: number;
   };
-};
-
-export type ColormeGetSaleParams = {
-  /** 受注ID */
-  sale_id: number;
-};
-
-export type ColormeGetSalesParams = {
-  /** 受注IDで検索。カンマ区切りで複数指定可能 */
-  ids?: string;
-  /**
-   * 指定日時以降の受注から検索。
-   *
-   * `after` 未指定時は `before` の指定日時の7日前の0時、
-   *
-   * `before` 未指定時は現在から7日前の0時がデフォルト値となります。
-   */
-  after?: string;
-  /** 指定日時以前の受注から検索 */
-  before?: string;
-  /** `after`と同義 */
-  make_date_min?: string;
-  /** `before`と同義 */
-  make_date_max?: string;
-  /** 指定日時以降に更新された受注から検索 */
-  update_date_min?: string;
-  /** 指定日時以前に更新された受注から検索 */
-  update_date_max?: string;
-  /** 購入した顧客IDで検索。カンマ区切りにすることで複数検索が可能 */
-  customer_ids?: string;
-  /** 購入した顧客名で部分一致検索 */
-  customer_name?: string;
-  /** 購入した顧客フリガナがで部分一致検索 */
-  customer_furigana?: string;
-  /** 購入した顧客メールアドレスで部分一致検索 */
-  customer_mail?: string;
-  /**
-   * 受注メールの送信状態で検索
-   *
-   * - `not_yet`: 未送信
-   * - `sent`: 送信済み
-   * - `pass`: 送信しない
-   */
-  accepted_mail_state?: "not_yet" | "sent" | "pass";
-  /**
-   * 入金メールの送信状態で検索
-   *
-   * - `not_yet`: 未送信
-   * - `sent`: 送信済み
-   * - `pass`: 送信しない
-   */
-  paid_mail_state?: "not_yet" | "sent" | "pass";
-  /**
-   * 配送メールの送信状態で検索
-   *
-   * - `not_yet`: 未送信
-   * - `sent`: 送信済み
-   * - `pass`: 送信しない
-   */
-  delivered_mail_state?: "not_yet" | "sent" | "pass";
-  /** `true`なら携帯からの受注のみ取得 */
-  mobile?: boolean;
-  /** `true`なら入金済みの受注のみ取得 */
-  paid?: boolean;
-  /** `true`なら配送済みの受注のみ取得 */
-  delivered?: boolean;
-  /** `true`ならキャンセル済みの受注のみ取得 */
-  canceled?: boolean;
-  /** 使用された決済のIDで検索。カンマ区切りで複数指定可能 */
-  payment_ids?: string;
-  /** レスポンスJSONのキーをカンマ区切りで指定 */
-  fields?: string;
-  /** レスポンスの件数を指定。指定がない場合は10。最大100 */
-  limit?: number;
-  /** 指定した数値+1件目以降のデータを返す */
-  offset?: number;
-};
-
-export type ColormeGetStatParams = {
-  /** 集計対象とする売上の作成日。形式は"2017-04-12"、"2017/04/12"など。指定しない場合は今日の日付が使われる */
-  make_date?: string;
 };
 
 export type ColormeCustomerResponse = {
@@ -487,4 +412,128 @@ export type ColormeSaleResponse = {
   customer?: ColormeCustomerResponse;
   detail?: ColormeDetailResponse[];
   sale_deliveries?: ColormeSaleDeliveries[];
+};
+
+/*
+
+Params
+
+*/
+export type ColormeGetSalesParams = {
+  /** 受注IDで検索。カンマ区切りで複数指定可能 */
+  ids?: string;
+  /**
+   * 指定日時以降の受注から検索。
+   *
+   * `after` 未指定時は `before` の指定日時の7日前の0時、
+   *
+   * `before` 未指定時は現在から7日前の0時がデフォルト値となります。
+   */
+  after?: string;
+  /** 指定日時以前の受注から検索 */
+  before?: string;
+  /** `after`と同義 */
+  make_date_min?: string;
+  /** `before`と同義 */
+  make_date_max?: string;
+  /** 指定日時以降に更新された受注から検索 */
+  update_date_min?: string;
+  /** 指定日時以前に更新された受注から検索 */
+  update_date_max?: string;
+  /** 購入した顧客IDで検索。カンマ区切りにすることで複数検索が可能 */
+  customer_ids?: string;
+  /** 購入した顧客名で部分一致検索 */
+  customer_name?: string;
+  /** 購入した顧客フリガナがで部分一致検索 */
+  customer_furigana?: string;
+  /** 購入した顧客メールアドレスで部分一致検索 */
+  customer_mail?: string;
+  /**
+   * 受注メールの送信状態で検索
+   *
+   * - `not_yet`: 未送信
+   * - `sent`: 送信済み
+   * - `pass`: 送信しない
+   */
+  accepted_mail_state?: "not_yet" | "sent" | "pass";
+  /**
+   * 入金メールの送信状態で検索
+   *
+   * - `not_yet`: 未送信
+   * - `sent`: 送信済み
+   * - `pass`: 送信しない
+   */
+  paid_mail_state?: "not_yet" | "sent" | "pass";
+  /**
+   * 配送メールの送信状態で検索
+   *
+   * - `not_yet`: 未送信
+   * - `sent`: 送信済み
+   * - `pass`: 送信しない
+   */
+  delivered_mail_state?: "not_yet" | "sent" | "pass";
+  /** `true`なら携帯からの受注のみ取得 */
+  mobile?: boolean;
+  /** `true`なら入金済みの受注のみ取得 */
+  paid?: boolean;
+  /** `true`なら配送済みの受注のみ取得 */
+  delivered?: boolean;
+  /** `true`ならキャンセル済みの受注のみ取得 */
+  canceled?: boolean;
+  /** 使用された決済のIDで検索。カンマ区切りで複数指定可能 */
+  payment_ids?: string;
+  /** レスポンスJSONのキーをカンマ区切りで指定 */
+  fields?: string;
+  /** レスポンスの件数を指定。指定がない場合は10。最大100 */
+  limit?: number;
+  /** 指定した数値+1件目以降のデータを返す */
+  offset?: number;
+};
+
+export type ColormeGetStatParams = {
+  /** 集計対象とする売上の作成日。形式は"2017-04-12"、"2017/04/12"など。指定しない場合は今日の日付が使われる */
+  make_date?: string;
+};
+
+export type ColormeGetSaleParams = {
+  /** 受注ID */
+  sale_id: number;
+};
+
+export type ColormeGetCustomersParams = {
+  /** 顧客IDで検索。カンマ区切りで複数指定可能 */
+  ids?: string;
+  /** 顧客名で部分一致検索 */
+  name?: string;
+  /** 顧客フリガナで部分一致検索 */
+  furigana?: string;
+  /** 顧客メールアドレスで部分一致検索 */
+  mail?: string;
+  /** 顧客の郵便番号で部分一致検索 */
+  postal?: string;
+  /** 顧客の電話番号で部分一致検索 */
+  tel?: string;
+  /**
+   * 顧客の性別で検索
+   *
+   * - `male`: 男性
+   * - `female`: 女性
+   */
+  sex?: "male" | "female";
+  /** `true`なら会員登録済みの顧客から検索 */
+  member?: boolean;
+  /** メルマガ受信可否で検索 */
+  receive_mail_magazine?: boolean;
+  /** 指定日時以降に登録された顧客から検索 */
+  make_date_min?: string;
+  /** 指定日時以前に登録された顧客から検索 */
+  make_date_max?: string;
+  /** 指定日時以降に更新された顧客から検索 */
+  update_date_min?: string;
+  /** 指定日時以前に更新された顧客から検索 */
+  update_date_max?: string;
+  /** レスポンスの件数を指定。指定がない場合は10。最大100 */
+  limit?: number;
+  /** 指定した数値+1件目以降のデータを返す */
+  offset?: number;
 };
