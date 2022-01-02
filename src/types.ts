@@ -128,6 +128,11 @@ export type ColormeSalesStatResponse = {
   };
 };
 
+export type ColormeGetSaleParams = {
+  /** 受注ID */
+  sale_id: number;
+};
+
 export type ColormeGetSalesParams = {
   /** 受注IDで検索。カンマ区切りで複数指定可能 */
   ids?: string;

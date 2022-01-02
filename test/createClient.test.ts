@@ -30,4 +30,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getSale
+  test.skip("getSale", async () => {
+    try {
+      await client.sales.getSale({ sale_id: 151469917 });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });
