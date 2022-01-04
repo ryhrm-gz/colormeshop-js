@@ -54,4 +54,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getProducts
+  test.skip("getProducts", async () => {
+    try {
+      console.log(await client.products.getProducts());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

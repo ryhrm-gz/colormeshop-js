@@ -1,10 +1,10 @@
 import { AxiosError, AxiosInstance } from "axios";
-import { ColormeGetCustomerParamas, ColormeCustomerResponse } from "../..";
+import { ColormeGetCustomerParams, ColormeCustomerResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const getCustomer = async (
   client: AxiosInstance,
-  params: ColormeGetCustomerParamas
+  params: ColormeGetCustomerParams
 ): Promise<{ customer: ColormeCustomerResponse }> => {
   if (!params.customer_id) {
     throw {

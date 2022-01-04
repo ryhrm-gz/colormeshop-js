@@ -414,6 +414,188 @@ export type ColormeSaleResponse = {
   sale_deliveries?: ColormeSaleDeliveries[];
 };
 
+export type ColormeProductResponse = {
+  /** ショップアカウントID */
+  account_id?: string;
+  /** 商品ID */
+  id?: number;
+  /** 商品名 */
+  name?: string;
+  /** 在庫数 */
+  stocks?: number | null;
+  /** 在庫管理するか否か */
+  stock_managed?: boolean;
+  /** 残りわずかとなる在庫数 */
+  few_num?: number | null;
+  /** 型番 */
+  model_number?: string | null;
+  category?: {
+    /** 大カテゴリーID */
+    id_big?: number;
+    /** 小カテゴリーID */
+    id_small?: number;
+  } | null;
+  /** 商品が属するグループのIDの配列 */
+  group_ids?: number[];
+  /**
+   * 掲載設定
+   *
+   *  - `showing`: 掲載状態
+   *  - `hidden`: 非掲載状態
+   *  - `showing_for_members`: 会員にのみ掲載
+   *  - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** 販売価格 */
+  sales_price?: number | null;
+  /** 消費税込販売価格 */
+  sales_price_including_tax?: number;
+  /** 消費税額 */
+  sales_price_tax?: number;
+  /** 定価 */
+  price?: number | null;
+  /** 会員価格 */
+  members_price?: number | null;
+  /** 消費税込会員価格 */
+  members_price_including_tax?: number;
+  /** 会員価格の消費税額 */
+  members_price_tax?: number;
+  /** 原価 */
+  cost?: number | null;
+  /** 個別送料 */
+  delivery_charge?: number | null;
+  /** クール便の追加料金 */
+  cool_charge?: number | null;
+  /** 利用不可決済方法の配列 */
+  unavailable_payment_ids?: number[];
+  /** 利用不可配送方法の配列 */
+  unavailable_delivery_ids?: number[];
+  /** 最小購入数量 */
+  min_num?: number | null;
+  /** 最大購入数量 */
+  max_num?: number | null;
+  /** 掲載開始時刻 */
+  sale_start_date?: number | null;
+  /** 掲載終了時刻 */
+  sale_end_date?: number | null;
+  /** 単位 */
+  unit?: string | null;
+  /** 重量(グラム単位) */
+  weight?: number | null;
+  /** 売り切れているときもショップに表示するか */
+  soldout_display?: boolean;
+  /** 表示順 */
+  sort?: number | null;
+  /** 簡易説明 */
+  simple_expl?: string | null;
+  /** 商品説明 */
+  expl?: string | null;
+  /** フィーチャーフォン向けショップの商品説明 */
+  mobile_expl?: string | null;
+  /** スマホ向けショップの商品説明 */
+  smartphone_expl?: string | null;
+  /** 商品作成日時 */
+  make_date?: number;
+  /** 商品更新日時 */
+  update_date?: number;
+  /** 備考 */
+  memo?: string;
+  /** メインの商品画像URL */
+  image_url?: string | null;
+  /** メインの商品画像のモバイル用URL */
+  mobile_image_url?: string | null;
+  /** メインの商品画像のサムネイルURL */
+  thumbnail_image_url?: string | null;
+  /** メインの商品画像以外の3つの画像に関する、PC用とモバイル用の画像URL */
+  images?: {
+    /** 画像URL */
+    src?: string;
+    /** 表示順 */
+    position?: number;
+    /** モバイル用であるか否か */
+    mobile?: boolean;
+  }[];
+  /** 選択できるオプションの一覧 */
+  options?: {
+    /** オプションID */
+    id?: number;
+    /** 商品ID */
+    product_id?: number;
+    /** ショップアカウントID */
+    account_id?: string;
+    /** オプション名 */
+    name?: string;
+    /** オプション値の配列 */
+    values?: string[];
+    /** オプション作成日時 */
+    make_date?: number;
+    /** オプション更新日時 */
+    update_date?: number;
+  }[];
+  /** オプションのバリエーション一覧 */
+  variants?: {
+    /** 商品ID */
+    product_id?: number;
+    /** ショップアカウントID */
+    account_id?: string;
+    /** オプション1の値 */
+    option1_value?: string | null;
+    /** オプション2の値 */
+    option2_value?: string | null;
+    /** オプション1とオプション2の名前を"　x　"で結合した表示名。オプションが1つしか設定されていない場合はそのオプションの名前に等しい */
+    title?: string;
+    /** 在庫数 */
+    stocks?: number | null;
+    /** 残りわずかとなる在庫数 */
+    few_num?: number | null;
+    /** 型番 */
+    model_number?: string | null;
+    /** 販売価格 */
+    option_price?: number | null;
+    /** 消費税込販売価格 */
+    option_price_including_tax?: number;
+    /** 消費税額 */
+    option_price_tax?: number;
+    /** 会員価格 */
+    option_members_price?: number | null;
+    /** 消費税込会員価格 */
+    option_members_price_including_tax?: number;
+    /** 会員価格の消費税額 */
+    option_members_price_tax?: number;
+    /** オプション作成日時 */
+    make_date?: number;
+    /** オプション更新日時 */
+    update_date?: number;
+  }[];
+  /**
+   * おすすめ商品情報
+   *
+   * ※おすすめ商品種別が「3: 新着商品」の情報は、「[新着商品管理](https://shop-pro.jp/manual/new_item_lst)」が「手動モード」の場合のみ取得できます。
+   */
+  pickups?: {
+    /** おすすめ商品情報種別 */
+    pickup_type?: number;
+    /** 商品の表示順 */
+    order_num?: number | null;
+    /** 作成日時 */
+    make_date?: number;
+    /** 更新日時 */
+    update_date?: number;
+  }[];
+  /** デジタルコンテンツ商品かどうか */
+  digital_conent?: boolean;
+  /** 定期購入商品かどうか */
+  regular_purchase?: boolean;
+  /** 軽減税率対象なら `true` */
+  tax_reduced?: boolean;
+  /** 配送不要商品なら `true` */
+  without_shipping?: boolean;
+};
+
 /*
 
 Params
@@ -425,9 +607,7 @@ export type ColormeGetSalesParams = {
   /**
    * 指定日時以降の受注から検索。
    *
-   * `after` 未指定時は `before` の指定日時の7日前の0時、
-   *
-   * `before` 未指定時は現在から7日前の0時がデフォルト値となります。
+   * `after` 未指定時は `before` の指定日時の7日前の0時、`before` 未指定時は現在から7日前の0時がデフォルト値となります。
    */
   after?: string;
   /** 指定日時以前の受注から検索 */
@@ -538,7 +718,55 @@ export type ColormeGetCustomersParams = {
   offset?: number;
 };
 
-export type ColormeGetCustomerParamas = {
+export type ColormeGetCustomerParams = {
   /** 顧客ID */
   customer_id: number;
+};
+
+export type ColormeGetProductsParams = {
+  /** 商品IDで検索。カンマ区切りにすることで複数検索が可能 */
+  ids?: string;
+  /** 大カテゴリーIDで検索 */
+  category_id_big?: number;
+  /** 小カテゴリーIDで検索 */
+  category_id_small?: number;
+  /** グループIDで検索。カンマ区切りにすることで複数検索が可能 */
+  group_ids?: number;
+  /** 型番で部分一致検索 */
+  model_number?: string;
+  /** 商品名で部分一致検索 */
+  name?: string;
+  /**
+   * 掲載設定で検索
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `showing_for_members`: 会員にのみ掲載
+   * - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** 在庫管理している商品のうち、在庫数が指定した数値以下の商品を検索。オプションごとに在庫管理している商品は、オプションごとの在庫数で検索される */
+  stocks?: number;
+  /** `true`の場合、在庫管理している商品を検索 */
+  stock_managed?: boolean;
+  /** `true` の場合、過去1週間以内に更新された商品から検索 */
+  recent_zero_stocks?: boolean;
+  /** 指定日時以降に作成された商品から検索 */
+  make_date_min?: string;
+  /** 指定日時以前に作成された商品から検索 */
+  make_date_max?: string;
+  /** 指定日時以降に更新された商品から検索 */
+  update_date_min?: string;
+  /** 指定日時以前に更新された商品から検索 */
+  update_date_max?: string;
+  /** レスポンスJSONのキーをカンマ区切りで指定 */
+  fields?: string;
+  /** レスポンスの件数を指定。指定がない場合は10。最大50 */
+  limit?: number;
+  /** 指定した数値+1件目以降のデータを返す */
+  offset?: number;
 };

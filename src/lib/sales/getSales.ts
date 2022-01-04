@@ -1,6 +1,6 @@
 import { AxiosError, AxiosInstance } from "axios";
-import { errorHandler } from "../errorHandler";
 import { ColormeGetSalesParams, ColormeSaleResponse, ColormeMeta } from "../..";
+import { errorHandler } from "../errorHandler";
 
 export const getSales = async (
   client: AxiosInstance,
