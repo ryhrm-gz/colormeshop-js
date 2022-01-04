@@ -9,6 +9,11 @@ export type ColormeClient = {
   accessToken: string;
 };
 
+/*
+
+Response
+
+*/
 export type ColormeMeta = {
   /** トータルの件数 */
   total?: number;
@@ -17,12 +22,6 @@ export type ColormeMeta = {
   /** 実効offset */
   offset?: number;
 };
-
-/*
-
-Response
-
-*/
 
 export type ColormeShopResponse = {
   shop: {
@@ -691,6 +690,36 @@ export type ColormeStockResponse = {
     /** モバイル用であるか否か */
     mobile?: boolean;
   }[];
+};
+
+export type ColormeGroupResponse = {
+  /** 商品グループID */
+  id?: number;
+  /** ショップアカウントID */
+  account_id?: string;
+  /** 商品グループ名 */
+  name?: string;
+  /** 商品グループ画像URL */
+  image_url?: string | null;
+  /** 商品グループ説明 */
+  expl?: string | null;
+  /** 表示順 */
+  sort?: number | null;
+  /**
+   * 掲載設定
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `showing_for_members`: 会員にのみ掲載
+   * - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** 親の商品グループID */
+  parent_group_id?: number;
 };
 
 /*

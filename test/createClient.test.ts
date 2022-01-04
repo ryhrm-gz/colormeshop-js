@@ -78,4 +78,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getGroups
+  test.skip("getGroups", async () => {
+    try {
+      console.log(await client.groups.getGroups());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

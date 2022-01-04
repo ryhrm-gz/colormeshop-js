@@ -19,6 +19,7 @@ import { getCustomer } from "./lib/customers/getCustomer";
 import { getProducts } from "./lib/products/getProducts";
 import { getProduct } from "./lib/products/getProduct";
 import { getStocks } from "./lib/stocks/getStocks";
+import { getGroups } from "./lib/groups/getGroups";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -72,6 +73,9 @@ export const createClient = ({ accessToken }: ColormeClient) => {
      */
     getStocks: (params?: ColormeGetStocksParams) => getStocks(client, params),
   };
+  const groups = {
+    getGroups: () => getGroups(client),
+  };
 
-  return { shop, sales, customers, products, stocks };
+  return { shop, sales, customers, products, stocks, groups };
 };
