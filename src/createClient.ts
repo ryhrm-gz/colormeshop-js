@@ -20,6 +20,7 @@ import { getProducts } from "./lib/products/getProducts";
 import { getProduct } from "./lib/products/getProduct";
 import { getStocks } from "./lib/stocks/getStocks";
 import { getGroups } from "./lib/groups/getGroups";
+import { getCategories } from "./lib/categories/getCategories";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -74,8 +75,13 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     getStocks: (params?: ColormeGetStocksParams) => getStocks(client, params),
   };
   const groups = {
+    /** 商品グループ一覧を取得 */
     getGroups: () => getGroups(client),
   };
+  const categories = {
+    /** 商品カテゴリー一覧を取得 */
+    getCategories: () => getCategories(client),
+  };
 
-  return { shop, sales, customers, products, stocks, groups };
+  return { shop, sales, customers, products, stocks, groups, categories };
 };

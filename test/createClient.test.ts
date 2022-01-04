@@ -86,4 +86,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getCategories
+  test.skip("getCategories", async () => {
+    try {
+      console.log(await client.categories.getCategories());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

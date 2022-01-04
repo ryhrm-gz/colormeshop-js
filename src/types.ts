@@ -722,6 +722,64 @@ export type ColormeGroupResponse = {
   parent_group_id?: number;
 };
 
+export type ColormeCategoryResponse = {
+  /** 大カテゴリーID */
+  id_big?: number;
+  /** 小カテゴリーID。大カテゴリーのことを表している場合は0 */
+  id_small?: number;
+  /** ショップアカウントID */
+  account_id?: string;
+  /** 商品カテゴリー名 */
+  name?: string;
+  /** 商品カテゴリー画像URL */
+  image_url?: string | null;
+  /** 商品カテゴリー説明 */
+  expl?: string | null;
+  /** 表示順 */
+  sort?: number | null;
+  /**
+   * 掲載設定
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `members_only`: 会員にのみ掲載
+   */
+  display_state?: "showing" | "hidden" | "members_only";
+  /** 商品カテゴリー作成日時 */
+  make_date?: number;
+  /** 商品カテゴリー更新日時 */
+  update_date?: number;
+  /** 子カテゴリー */
+  children?: {
+    /** 大カテゴリーID */
+    id_big?: number;
+    /** 小カテゴリーID。大カテゴリーのことを表している場合は0 */
+    id_small?: number;
+    /** ショップアカウントID */
+    account_id?: string;
+    /** 商品カテゴリー名 */
+    name?: string;
+    /** 商品カテゴリー画像URL */
+    image_url?: string | null;
+    /** 商品カテゴリー説明 */
+    expl?: string | null;
+    /** 表示順 */
+    sort?: number | null;
+    /**
+     * 掲載設定
+     *
+     * - `showing`: 掲載状態
+     * - `hidden`: 非掲載状態
+     * - `members_only`: 会員にのみ掲載
+     */
+    display_state?: "showing" | "hidden" | "members_only";
+    /** 商品カテゴリー作成日時 */
+    make_date?: number;
+    /** 商品カテゴリー更新日時 */
+    update_date?: number;
+  }[];
+};
+
 /*
 
 Params
