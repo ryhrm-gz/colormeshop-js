@@ -62,4 +62,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getProduct
+  test.skip("getProduct", async () => {
+    try {
+      console.log(await client.products.getProduct({ product_id: 1 }));
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

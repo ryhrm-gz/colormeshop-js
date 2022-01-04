@@ -770,3 +770,8 @@ export type ColormeGetProductsParams = {
   /** 指定した数値+1件目以降のデータを返す */
   offset?: number;
 };
+
+export type ColormeGetProductParams = {
+  /** 商品ID */
+  product_id: number;
+};

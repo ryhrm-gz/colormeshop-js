@@ -3,6 +3,7 @@ import {
   ColormeClient,
   ColormeGetCustomerParams,
   ColormeGetCustomersParams,
+  ColormeGetProductParams,
   ColormeGetProductsParams,
   ColormeGetSaleParams,
   ColormeGetSalesParams,
@@ -15,6 +16,7 @@ import { getSale } from "./lib/sales/getSale";
 import { getCustomers } from "./lib/customers/getCustomers";
 import { getCustomer } from "./lib/customers/getCustomer";
 import { getProducts } from "./lib/products/getProducts";
+import { getProduct } from "./lib/products/getProduct";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -55,8 +57,11 @@ export const createClient = ({ accessToken }: ColormeClient) => {
       getCustomer(client, params),
   };
   const products = {
+    /** 商品一覧の取得 */
     getProducts: (params?: ColormeGetProductsParams) =>
       getProducts(client, params),
+    /** 商品データの取得 */
+    getProduct: (params: ColormeGetProductParams) => getProduct(client, params),
   };
 
   return { shop, sales, customers, products };

@@ -35,5 +35,5 @@ import { createClient } from "colormeshop-js";
 #### 2. Create a Client
 
 ```javascript
-const client = createClient({ accessToken: "Your Access token" });
+const client = createClient({ accessToken: "Your access token" });
 ```
