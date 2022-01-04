@@ -537,3 +537,8 @@ export type ColormeGetCustomersParams = {
   /** 指定した数値+1件目以降のデータを返す */
   offset?: number;
 };
+
+export type ColormeGetCustomerParamas = {
+  /** 顧客ID */
+  customer_id: number;
+};

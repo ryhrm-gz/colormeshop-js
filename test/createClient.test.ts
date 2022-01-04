@@ -33,7 +33,7 @@ describe("createClient", () => {
   //getSale
   test.skip("getSale", async () => {
     try {
-      await client.sales.getSale({ sale_id: 151469917 });
+      await client.sales.getSale({ sale_id: 1 });
     } catch (error) {
       console.log(error);
     }
@@ -42,6 +42,14 @@ describe("createClient", () => {
   test.skip("getCustomers", async () => {
     try {
       console.log(await client.customers.getCustomers());
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  //getCustomer
+  test.skip("getCustomer", async () => {
+    try {
+      console.log(await client.customers.getCustomer({ customer_id: 1 }));
     } catch (error) {
       console.log(error);
     }

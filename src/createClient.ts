@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 import {
   ColormeClient,
+  ColormeGetCustomerParamas,
   ColormeGetCustomersParams,
   ColormeGetSaleParams,
   ColormeGetSalesParams,
@@ -11,6 +12,7 @@ import { getSales } from "./lib/sales/getSales";
 import { getStat } from "./lib/sales/getStat";
 import { getSale } from "./lib/sales/getSale";
 import { getCustomers } from "./lib/customers/getCustomers";
+import { getCustomer } from "./lib/customers/getCustomer";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -35,6 +37,8 @@ export const createClient = ({ accessToken }: ColormeClient) => {
   const customers = {
     getCustomers: (params?: ColormeGetCustomersParams) =>
       getCustomers(client, params),
+    getCustomer: (params: ColormeGetCustomerParamas) =>
+      getCustomer(client, params),
   };
 
   return { shop, sales, customers };
