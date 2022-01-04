@@ -70,4 +70,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getStocks
+  test.skip("getStocks", async () => {
+    try {
+      console.log(await client.stocks.getStocks());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

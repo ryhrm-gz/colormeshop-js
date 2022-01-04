@@ -8,6 +8,7 @@ import {
   ColormeGetSaleParams,
   ColormeGetSalesParams,
   ColormeGetStatParams,
+  ColormeGetStocksParams,
 } from ".";
 import { getShop } from "./lib/shop/getShop";
 import { getSales } from "./lib/sales/getSales";
@@ -17,6 +18,7 @@ import { getCustomers } from "./lib/customers/getCustomers";
 import { getCustomer } from "./lib/customers/getCustomer";
 import { getProducts } from "./lib/products/getProducts";
 import { getProduct } from "./lib/products/getProduct";
+import { getStocks } from "./lib/stocks/getStocks";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -63,6 +65,13 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     /** 商品データの取得 */
     getProduct: (params: ColormeGetProductParams) => getProduct(client, params),
   };
+  const stocks = {
+    /**
+     * 在庫情報の取得
+     * 在庫情報を商品名や型番で検索できるAPIです。
+     */
+    getStocks: (params?: ColormeGetStocksParams) => getStocks(client, params),
+  };
 
-  return { shop, sales, customers, products };
+  return { shop, sales, customers, products, stocks };
 };

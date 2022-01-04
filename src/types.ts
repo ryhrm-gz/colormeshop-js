@@ -596,6 +596,103 @@ export type ColormeProductResponse = {
   without_shipping?: boolean;
 };
 
+export type ColormeStockResponse = {
+  /** ショップアカウントID */
+  account_id?: string;
+  /** 商品ID */
+  product_id?: number;
+  /** 商品名 */
+  name?: string;
+  /** オプション1の値 */
+  option1_value?: string | null;
+  /** オプション2の値 */
+  option2_value?: string | null;
+  /** 在庫数 */
+  stocks?: number | null;
+  /** 残りわずかとなる在庫数 */
+  few_num?: number | null;
+  /** 型番 */
+  model_number?: string | null;
+  /** オプションの型番 */
+  variant_model_number?: string | null;
+  category?: {
+    /** 大カテゴリーID */
+    id_big?: number;
+    /** 小カテゴリーID */
+    id_small?: number;
+  } | null;
+  /**
+   * 掲載設定
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `showing_for_members`: 会員にのみ掲載
+   * - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** 販売価格 */
+  sales_price?: number | null;
+  /** 定価 */
+  price?: number | null;
+  /** 会員価格 */
+  members_price?: number | null;
+  /** 原価 */
+  cost?: number | null;
+  /** 個別送料 */
+  delivery_charge?: number | null;
+  /** クール便の追加料金 */
+  cool_charge?: number | null;
+  /** 最小購入数量 */
+  min_num?: number | null;
+  /** 最大購入数量 */
+  max_num?: number | null;
+  /** 掲載開始時刻 */
+  sale_start_date?: number | null;
+  /** 掲載終了時刻 */
+  sale_end_date?: number | null;
+  /** 単位 */
+  unit?: string | null;
+  /** 重量(グラム単位) */
+  weight?: number | null;
+  /** 売り切れているときもショップに表示するか */
+  soldout_display?: boolean;
+  /** 表示順 */
+  sort?: number | null;
+  /** 簡易説明 */
+  simple_expl?: string | null;
+  /** 商品説明 */
+  expl?: string | null;
+  /** フィーチャーフォン向けショップの商品説明 */
+  mobile_expl?: string | null;
+  /** スマホ向けショップの商品説明 */
+  smartphone_expl?: string | null;
+  /** 商品作成日時 */
+  make_date?: number;
+  /** 商品更新日時 */
+  update_date?: number;
+  /** 備考 */
+  memo?: string;
+  /** メインの商品画像URL */
+  image_url?: string | null;
+  /** メインの商品画像のモバイル用URL */
+  mobile_image_url?: string | null;
+  /** メインの商品画像のサムネイルURL */
+  thumbnail_image_url?: string | null;
+  /** メインの商品画像以外の3つの画像に関する、PC用とモバイル用の画像URL */
+  images?: {
+    /** 画像URL */
+    src?: string;
+    /** 表示順 */
+    position?: number;
+    /** モバイル用であるか否か */
+    mobile?: boolean;
+  }[];
+};
+
 /*
 
 Params
@@ -774,4 +871,40 @@ export type ColormeGetProductsParams = {
 export type ColormeGetProductParams = {
   /** 商品ID */
   product_id: number;
+};
+
+export type ColormeGetStocksParams = {
+  /** 商品IDで検索。カンマ区切りにすることで複数検索が可能 */
+  ids?: string;
+  /** 大カテゴリーIDで検索 */
+  category_id_big?: number;
+  /** 小カテゴリーIDで検索 */
+  category_id_small?: number;
+  /** 型番で部分一致検索 */
+  model_number?: string;
+  /** 商品名で部分一致検索 */
+  name?: string;
+  /**
+   * 掲載設定で検索
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `showing_for_members`: 会員にのみ掲載
+   * - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** 在庫管理している商品のうち、在庫数が指定した数値以下の商品を検索。オプションごとに在庫管理している商品は、オプションごとの在庫数で検索される */
+  stocks?: number;
+  /** `true` の場合、過去1週間以内に更新された商品から検索 */
+  recent_zero_stocks?: boolean;
+  /** レスポンスJSONのキーをカンマ区切りで指定 */
+  fields?: string;
+  /** レスポンスの件数を指定。指定がない場合は10。最大50 */
+  limit?: number;
+  /** 指定した数値+1件目以降のデータを返す */
+  offset?: number;
 };

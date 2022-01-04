@@ -1,17 +1,17 @@
 import { AxiosError, AxiosInstance } from "axios";
 import {
-  ColormeGetProductsParams,
+  ColormeGetStocksParams,
   ColormeMeta,
-  ColormeProductResponse,
+  ColormeStockResponse,
 } from "../..";
 import { errorHandler } from "../errorHandler";
 
-export const getProducts = async (
+export const getStocks = async (
   client: AxiosInstance,
-  params?: ColormeGetProductsParams
-): Promise<{ products: ColormeProductResponse[]; meta: ColormeMeta }> => {
+  params?: ColormeGetStocksParams
+): Promise<{ stocks: ColormeStockResponse[]; meta: ColormeMeta }> => {
   try {
-    const response = await client.get("products", { params });
+    const response = await client.get("stocks", { params });
     return response.data;
   } catch (error: AxiosError | any) {
     throw errorHandler(error);
