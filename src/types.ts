@@ -231,7 +231,7 @@ export type ColormeDetailResponse = {
   subtotal_price?: number;
 };
 
-export type ColormeSaleDeliveries = {
+export type ColormeSaleDeliveryResponse = {
   /** お届け先ID */
   id?: number;
   /** ショップアカウントID */
@@ -410,7 +410,7 @@ export type ColormeSaleResponse = {
   external_order_id?: string;
   customer?: ColormeCustomerResponse;
   detail?: ColormeDetailResponse[];
-  sale_deliveries?: ColormeSaleDeliveries[];
+  sale_deliveries?: ColormeSaleDeliveryResponse[];
 };
 
 export type ColormeProductResponse = {
@@ -908,6 +908,151 @@ export type ColormePaymentResponse = {
     /** 口座名義 */
     kouza_name?: string;
   };
+};
+
+export type ColormeDeliveryResponse = {
+  /** 配送方法ID */
+  id?: number;
+  /** ショップアカウントID */
+  account_id?: string;
+  /** 配送方法名 */
+  name?: string;
+  /**
+   * 配送方法区分
+   *
+   * - `other`: そのほか
+   * - `yamato`: クロネコヤマト
+   * - `yamato_pickup`: ヤマト自宅外受け取り
+   * - `sagawa`: 佐川急便
+   * - `jp`: 日本郵便
+   */
+  method_type?: "other" | "yamato" | "yamato_pickup" | "sagawa" | "jp";
+  /** 配送方法画像URL */
+  image_url?: string | null;
+  /**
+   * 配送料が無料になる基準
+   *
+   * - `not_free`: 有料
+   * - `free`: 無料
+   * - `free_to_limit`: 注文金額が一定以上の場合は無料
+   */
+  charge_free_type?: "not_free" | "free" | "free_to_limit";
+  /** 配送料が無料になる金額。`charge_free_type`が`free_to_limit`の場合のみ意味を持つ */
+  charge_free_limit?: number | null;
+  /**
+   * 配送料の計算方法
+   *
+   * - `fixed`: 固定額
+   * - `by_price`: 注文金額によって決定
+   * - `by_area`: 配送先都道府県によって決定
+   * - `by_weight`: 商品重量によって決定
+   */
+  charge_type?: "fixed" | "by_price" | "by_area" | "by_weight";
+  /** 配送料設定の詳細。上記の`charge_free_type`や`charge_type`に基づいて、この中から配送料が決定される */
+  charge?: {
+    /** 配送方法ID */
+    delivery_id?: number;
+    /** ショップアカウントID */
+    account_id?: string;
+    /** 配送料が固定の場合の金額 */
+    charge_fixed?: number | null;
+    /**
+     * 配送料が変わる決済金額の区分
+     *
+     * `[3000, 100]`であれば、3000円以下の場合、手数料は100円であることを表す
+     */
+    charge_ranges_by_price?: number[][];
+    /** `charge_ranges_by_price`に設定されている区分以上の金額の場合の手数料 */
+    charge_max_price?: number | null;
+    /** 都道府県ごとの配送料 */
+    charge_ranges_by_area?: {
+      /** 都道府県の通し番号。北海道が1、沖縄が47、海外が48 */
+      pref_id?: number;
+      /** 都道府県名 */
+      pref_name?: string;
+      /** 配送料 */
+      charge?: number;
+    }[];
+    /**
+     * 配送料が変わる重量の区分
+     *
+     * 以下の値の場合、
+     *
+     * - 1000g未満の商品を青森県に届ける際の配送料は300円
+     * - 3000g未満の商品を青森県に届ける際の配送料は500円
+     *
+     * であることを表す。
+     *
+     * ```json
+     * [
+     *   [
+     *     1000,
+     *     [
+     *       {
+     *         "pref_id": 2,
+     *         "pref_name": "青森県",
+     *         "charge": 300
+     *       }
+     *     ]
+     *   ],
+     *   [
+     *     3000,
+     *     [
+     *       {
+     *         "pref_id": 2,
+     *         "pref_name": "青森県",
+     *         "charge": 500
+     *       }
+     *     ]
+     *   ]
+     * ]
+     * ```
+     */
+    charge_ranges_by_weight?: (
+      | number
+      | {
+          /** 都道府県の通し番号。北海道が1、沖縄が47、海外が48 */
+          pref_id?: number;
+          /** 都道府県名 */
+          pref_name?: string;
+          /** 配送料 */
+          charge?: number;
+        }
+    )[][];
+    /** `charge_ranges_by_weight`に設定されている区分以上の重量の場合の手数料 */
+    charge_ranges_max_weight?: {
+      /** 都道府県の通し番号。北海道が1、沖縄が47、海外が48 */
+      pref_id?: number;
+      /** 都道府県名 */
+      pref_name?: string;
+      /** 配送料 */
+      charge?: number;
+    }[];
+  };
+  /** 送料が税込み料金であるか否か */
+  tax_included?: boolean;
+  /** 配送伝票番号設定を使用するか否か */
+  slip_number_use?: boolean;
+  /** 配送伝票番号確認URL */
+  slip_number_url?: string | null;
+  /** 配送方法の説明 */
+  memo?: string | null;
+  /** フィーチャーフォン向けショップ用の配送方法説明 */
+  memo2?: string | null;
+  /** 表示順 */
+  sort?: number | null;
+  /** 表示状態 */
+  display_state?: "showing" | "hidden";
+  /** 配送希望日を指定可能か */
+  preferred_date_use?: boolean;
+  /** 配送時間帯を指定可能か */
+  preferred_period_use?: boolean;
+  /** 利用不可決済方法の配列 */
+  unavailable_payment_ids?: number[];
+  /** 配送方法作成日時 */
+  make_date?: number;
+  /** 配送方法更新日時 */
+  update_date?: number;
 };
 
 /*

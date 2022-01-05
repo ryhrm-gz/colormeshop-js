@@ -21,6 +21,8 @@ import { getProduct } from "./lib/products/getProduct";
 import { getStocks } from "./lib/stocks/getStocks";
 import { getGroups } from "./lib/groups/getGroups";
 import { getCategories } from "./lib/categories/getCategories";
+import { getPayments } from "./lib/payments/getPayments";
+import { getDeliveries } from "./lib/deliveries/getDeliveries";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -82,6 +84,23 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     /** 商品カテゴリー一覧を取得 */
     getCategories: () => getCategories(client),
   };
+  const payments = {
+    /** 決済設定の一覧を取得 */
+    getPayments: () => getPayments(client),
+  };
+  const deliveries = {
+    getDeliveries: () => getDeliveries(client),
+  };
 
-  return { shop, sales, customers, products, stocks, groups, categories };
+  return {
+    shop,
+    sales,
+    customers,
+    products,
+    stocks,
+    groups,
+    categories,
+    payments,
+    deliveries,
+  };
 };

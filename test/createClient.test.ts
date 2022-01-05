@@ -94,4 +94,20 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getPayments
+  test.skip("getPayments", async () => {
+    try {
+      console.log(await client.payments.getPayments());
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  //getDeliveries
+  test.skip("getDeliveries", async () => {
+    try {
+      console.log(await client.deliveries.getDeliveries());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });
