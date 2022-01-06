@@ -110,4 +110,12 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //getGift
+  test("getGift", async () => {
+    try {
+      console.log(await client.gift.getGift());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

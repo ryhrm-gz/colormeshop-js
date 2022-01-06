@@ -24,92 +24,90 @@ export type ColormeMeta = {
 };
 
 export type ColormeShopResponse = {
-  shop: {
-    /** ショップアカウントID */
-    id?: string;
-    /** アカウント状態 */
-    state?: "enabled" | "suspended" | "unsigned";
-    /** ドメインプラン */
-    domain_plan?: "cmsp_sub_domain" | "own_domain" | "own_sub_domain";
-    /** 契約プラン */
-    contract_plan?:
-      | "unknown"
-      | "economy"
-      | "small"
-      | "regular"
-      | "lolipop"
-      | "heteml"
-      | "platinum"
-      | "goope"
-      | "large"
-      | "free";
-    /** 契約開始日時 */
-    contract_start_date?: number;
-    /** 契約終了日時 */
-    contract_end_date?: number;
-    /** 契約期間 */
-    contract_term?: number | null;
-    /** 最終ログイン日時 */
-    last_login_date?: number;
-    /** 申し込み完了日時 */
-    setup_date?: number;
-    /** アカウント作成日時 */
-    make_date?: number;
-    /** ショップURL */
-    url?: string;
-    /** 開店状態 */
-    open_state?: "opened" | "closed" | "prepare" | "paused";
-    /** モバイルショップ開店状態 */
-    mobile_open_state?: "opened" | "closed" | "prepare" | "paused";
-    /** ログインID */
-    login_id?: string;
-    /** 登録者氏名（姓） */
-    name1?: string;
-    /** 登録者氏名（名） */
-    name2?: string;
-    /** 登録者氏名カナ（姓） */
-    name1_kana?: string;
-    /** 登録者氏名カナ（名） */
-    name2_kana?: string;
-    /** 法人名 */
-    hojin?: string | null;
-    /** 法人名カナ */
-    hojin_kana?: string | null;
-    /** 登録者メールアドレス */
-    user_mail?: string;
-    /** 登録者電話番号 */
-    tel?: string;
-    /** 登録者FAX番号 */
-    fax?: string | null;
-    /** 郵便番号 */
-    postal?: string;
-    /** 都道府県ID */
-    pref_id?: number;
-    /** 都道府県名 */
-    pref_name?: string;
-    /** 住所1 */
-    address1?: string;
-    /** 住所2 */
-    address2?: string;
-    /** ショップ名 */
-    title?: string;
-    /** メールタイトル用ショップ名 */
-    title_short?: string;
-    /** 管理者メールアドレス */
-    shop_mail_1?: string;
-    /** 管理者携帯メールアドレス */
-    shop_mail_2?: string | null;
-    /** 消費税の内税・外税設定 */
-    tax_type?: "excluded" | "included";
-    /** 消費税率 */
-    tax?: number;
-    /** 消費税の切り捨て、切り上げ設定 */
-    tax_rounding_method?: "round_off" | "round_down" | "round_up";
-    /** 軽減税率 */
-    reduce_tax_rate?: number;
-    /** ショップロゴ画像のURL */
-    shop_logo_url?: string | null;
-  };
+  /** ショップアカウントID */
+  id?: string;
+  /** アカウント状態 */
+  state?: "enabled" | "suspended" | "unsigned";
+  /** ドメインプラン */
+  domain_plan?: "cmsp_sub_domain" | "own_domain" | "own_sub_domain";
+  /** 契約プラン */
+  contract_plan?:
+    | "unknown"
+    | "economy"
+    | "small"
+    | "regular"
+    | "lolipop"
+    | "heteml"
+    | "platinum"
+    | "goope"
+    | "large"
+    | "free";
+  /** 契約開始日時 */
+  contract_start_date?: number;
+  /** 契約終了日時 */
+  contract_end_date?: number;
+  /** 契約期間 */
+  contract_term?: number | null;
+  /** 最終ログイン日時 */
+  last_login_date?: number;
+  /** 申し込み完了日時 */
+  setup_date?: number;
+  /** アカウント作成日時 */
+  make_date?: number;
+  /** ショップURL */
+  url?: string;
+  /** 開店状態 */
+  open_state?: "opened" | "closed" | "prepare" | "paused";
+  /** モバイルショップ開店状態 */
+  mobile_open_state?: "opened" | "closed" | "prepare" | "paused";
+  /** ログインID */
+  login_id?: string;
+  /** 登録者氏名（姓） */
+  name1?: string;
+  /** 登録者氏名（名） */
+  name2?: string;
+  /** 登録者氏名カナ（姓） */
+  name1_kana?: string;
+  /** 登録者氏名カナ（名） */
+  name2_kana?: string;
+  /** 法人名 */
+  hojin?: string | null;
+  /** 法人名カナ */
+  hojin_kana?: string | null;
+  /** 登録者メールアドレス */
+  user_mail?: string;
+  /** 登録者電話番号 */
+  tel?: string;
+  /** 登録者FAX番号 */
+  fax?: string | null;
+  /** 郵便番号 */
+  postal?: string;
+  /** 都道府県ID */
+  pref_id?: number;
+  /** 都道府県名 */
+  pref_name?: string;
+  /** 住所1 */
+  address1?: string;
+  /** 住所2 */
+  address2?: string;
+  /** ショップ名 */
+  title?: string;
+  /** メールタイトル用ショップ名 */
+  title_short?: string;
+  /** 管理者メールアドレス */
+  shop_mail_1?: string;
+  /** 管理者携帯メールアドレス */
+  shop_mail_2?: string | null;
+  /** 消費税の内税・外税設定 */
+  tax_type?: "excluded" | "included";
+  /** 消費税率 */
+  tax?: number;
+  /** 消費税の切り捨て、切り上げ設定 */
+  tax_rounding_method?: "round_off" | "round_down" | "round_up";
+  /** 軽減税率 */
+  reduce_tax_rate?: number;
+  /** ショップロゴ画像のURL */
+  shop_logo_url?: string | null;
 };
 
 export type ColormeSalesStatResponse = {
@@ -1052,6 +1050,40 @@ export type ColormeDeliveryResponse = {
   /** 配送方法作成日時 */
   make_date?: number;
   /** 配送方法更新日時 */
+  update_date?: number;
+};
+
+export type ColormeGiftResponse = {
+  /** ショップアカウントID */
+  account_id?: string;
+  enabled?: boolean;
+  noshi?: {
+    enabled?: boolean;
+    text_enabled?: boolean;
+    text_charge?: number | null;
+    types?: {
+      name?: string;
+      charge?: number;
+    }[];
+    comment?: string;
+  };
+  card?: {
+    enabled?: boolean;
+    types?: {
+      name?: string;
+      charge?: number;
+    }[];
+    comment?: string;
+  };
+  wrapping?: {
+    enabled?: boolean;
+    types?: {
+      name?: string;
+      charge?: number;
+    }[];
+    comment?: string;
+  };
+  make_date?: number;
   update_date?: number;
 };
 

@@ -23,6 +23,7 @@ import { getGroups } from "./lib/groups/getGroups";
 import { getCategories } from "./lib/categories/getCategories";
 import { getPayments } from "./lib/payments/getPayments";
 import { getDeliveries } from "./lib/deliveries/getDeliveries";
+import { getGift } from "./lib/gift/getGift";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -89,18 +90,34 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     getPayments: () => getPayments(client),
   };
   const deliveries = {
+    /** 配送方法一覧を取得 */
     getDeliveries: () => getDeliveries(client),
+  };
+  const gift = {
+    /** ギフト設定を取得 */
+    getGift: () => getGift(client),
   };
 
   return {
+    /** ショップ */
     shop,
+    /** 受注 */
     sales,
+    /** 顧客 */
     customers,
+    /** 商品 */
     products,
+    /** 在庫 */
     stocks,
+    /** 商品グループ */
     groups,
+    /** 商品カテゴリー */
     categories,
+    /** 決済 */
     payments,
+    /** 配送 */
     deliveries,
+    /** ギフト */
+    gift,
   };
 };
