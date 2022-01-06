@@ -1355,3 +1355,8 @@ export type ColormeGetStocksParams = {
   /** 指定した数値+1件目以降のデータを返す */
   offset?: number;
 };
+
+export type ColormeGetCouponParams = {
+  /** Coupon ID */
+  coupon_id: number;
+};

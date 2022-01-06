@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 import {
   ColormeClient,
+  ColormeGetCouponParams,
   ColormeGetCustomerParams,
   ColormeGetCustomersParams,
   ColormeGetProductParams,
@@ -25,6 +26,7 @@ import { getPayments } from "./lib/payments/getPayments";
 import { getDeliveries } from "./lib/deliveries/getDeliveries";
 import { getGift } from "./lib/gift/getGift";
 import { getCoupons } from "./lib/coupons/getCoupons";
+import { getCoupon } from "./lib/coupons/getCoupon";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -101,6 +103,8 @@ export const createClient = ({ accessToken }: ColormeClient) => {
   const coupons = {
     /** ショップクーポン一覧取得 */
     getCoupons: () => getCoupons(client),
+    /** ショップクーポンの取得 */
+    getCoupon: (params: ColormeGetCouponParams) => getCoupon(client, params),
   };
 
   return {
