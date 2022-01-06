@@ -1087,6 +1087,59 @@ export type ColormeGiftResponse = {
   update_date?: number;
 };
 
+export type ColormeCouponResponse = {
+  /** Coupon ID */
+  id?: number;
+  /** クーポン名 */
+  name?: string;
+  /** クーポンコード */
+  code?: string;
+  /**
+   * クーポン種別
+   *
+   * - `amount`: 定額
+   * - `rate`: 定率
+   * - `delivery_charge`: 送料無料
+   */
+  coupon_type?: "amount" | "rate" | "delivery_charge";
+  /** 割引金額または割引率 */
+  discount_amount?: number;
+  /** 利用最低額 */
+  minimum_amount?: number;
+  /** 利用開始日 */
+  starts_at?: number;
+  /** 利用終了日 */
+  ends_at?: number;
+  /** 総利用可能数 */
+  total_usage_limit?: number;
+  /**
+   * ユーザ毎の利用可能数
+   *
+   * - `indisposable`: 無制限
+   * - `disposable`: 一度のみ
+   */
+  usage_limit?: "indisposable" | "disposable";
+  /**
+   * 商品グループによる制限
+   *
+   * - `none`: 無制限
+   * - `including`: 含む
+   * - `excluding`: 除外
+   */
+  group_limit_type?: "none" | "including" | "excluding";
+  /**
+   * クーポンの利用可否
+   *
+   * - `unavailable`: 利用不可
+   * - `available`: 利用可能
+   */
+  status?: "unavailable" | "available";
+  /** 作成日時 */
+  created_at?: number;
+  /** 更新日時 */
+  updated_at?: number;
+};
+
 /*
 
 Params

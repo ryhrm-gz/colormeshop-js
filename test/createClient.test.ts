@@ -111,9 +111,17 @@ describe("createClient", () => {
     }
   });
   //getGift
-  test("getGift", async () => {
+  test.skip("getGift", async () => {
     try {
       console.log(await client.gift.getGift());
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  //getCoupons
+  test("getCoupons", async () => {
+    try {
+      console.log(await client.coupons.getCoupons());
     } catch (error) {
       console.log(error);
     }

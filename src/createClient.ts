@@ -24,6 +24,7 @@ import { getCategories } from "./lib/categories/getCategories";
 import { getPayments } from "./lib/payments/getPayments";
 import { getDeliveries } from "./lib/deliveries/getDeliveries";
 import { getGift } from "./lib/gift/getGift";
+import { getCoupons } from "./lib/coupons/getCoupons";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -97,6 +98,10 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     /** ギフト設定を取得 */
     getGift: () => getGift(client),
   };
+  const coupons = {
+    /** ショップクーポン一覧取得 */
+    getCoupons: () => getCoupons(client),
+  };
 
   return {
     /** ショップ */
@@ -119,5 +124,7 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     deliveries,
     /** ギフト */
     gift,
+    /** ショップクーポン */
+    coupons,
   };
 };

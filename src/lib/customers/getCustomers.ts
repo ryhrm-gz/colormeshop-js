@@ -11,7 +11,7 @@ export const getCustomers = async (
   params?: ColormeGetCustomersParams
 ): Promise<{ customers: ColormeCustomerResponse[]; meta: ColormeMeta }> => {
   try {
-    const response = await client.get("/customers", { params });
+    const response = await client.get("customers", { params });
     return response.data;
   } catch (error: AxiosError | any) {
     throw errorHandler(error);
