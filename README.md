@@ -7,7 +7,7 @@ ColormeShop API Document: https://developer.shop-pro.jp/docs/colorme-api
 ### Install
 
 ```bash
-npm install colormeshop-js
+npm i colormeshop-js
 ```
 
 or

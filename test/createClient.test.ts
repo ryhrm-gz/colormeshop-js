@@ -134,4 +134,16 @@ describe("createClient", () => {
       console.log(error);
     }
   });
+  //updateSale
+  test.skip("updateSale", async () => {
+    try {
+      console.log(
+        await client.sales.updateSale(1, {
+          sale: { paid: false },
+        })
+      );
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
 });

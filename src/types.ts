@@ -1360,3 +1360,74 @@ export type ColormeGetCouponParams = {
   /** Coupon ID */
   coupon_id: number;
 };
+
+export type ColormeUpdateSaleParams = {
+  /** 入金済みであるか否か */
+  paid?: boolean;
+  /**
+   * ショップポイントの付与状態。`fixed`へ変更すると、購入者にショップポイントが付与される。`fixed`から別のステータスには変更できない
+   *
+   * - `assumed`: 仮付与
+   * - `fixed`: 確定済み
+   * - `cenceled`: キャンセル済み
+   */
+  point_state?: "assumed" | "fixed" | "cenceled";
+  sale_deliveries?: {
+    /** お届け先ID */
+    id?: number;
+    /** ショップアカウントID */
+    account_id?: string;
+    /** 売上ID */
+    sale_id?: number;
+    /** 使用された配送方法ID */
+    delivery_id?: number;
+    /** この配送に含まれる受注明細IDの配列 */
+    detail_ids?: number[];
+    /** 宛名 */
+    name?: string;
+    /** 宛名のフリガナ */
+    furigana?: string;
+    /** 郵便番号 */
+    postal?: string;
+    /** 都道府県の通し番号。北海道が1、沖縄が47 */
+    pref_id?: number;
+    /** 都道府県名 */
+    pref_name?: string;
+    /** 住所1 */
+    address1?: string | null;
+    /** 住所2 */
+    address2?: string | null;
+    /** 電話番号 */
+    tel?: string | null;
+    /** 配送希望日 */
+    preferred_date?: string | null;
+    /** 配送希望時間帯 */
+    preferred_period?: string | null;
+    /** 配送伝票番号 */
+    slip_number?: string | null;
+    /** 熨斗の文言 */
+    noshi_text?: string | null;
+    /** 熨斗の料金 */
+    noshi_charge?: number | null;
+    /** メッセージカードの表示名 */
+    card_name?: string | null;
+    /** メッセージカードのテキスト */
+    card_text?: string | null;
+    /** メッセージカードの料金 */
+    card_charge?: number | null;
+    /** ラッピングの表示名 */
+    wrapping_name?: string | null;
+    /** ラッピングの料金 */
+    wrapping_charge?: number | null;
+    /** 配送料 */
+    delivery_charge?: number;
+    /** 配送料・手数料の小計 */
+    total_charge?: number;
+    /** 配送状況確認URL */
+    tracking_url?: string | null;
+    /** 備考 */
+    memo?: string | null;
+    /** 発送済みであるか否か */
+    delivered?: boolean;
+  }[];
+};

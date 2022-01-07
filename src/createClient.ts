@@ -10,6 +10,7 @@ import {
   ColormeGetSalesParams,
   ColormeGetStatParams,
   ColormeGetStocksParams,
+  ColormeUpdateSaleParams,
 } from ".";
 import { getShop } from "./lib/shop/getShop";
 import { getSales } from "./lib/sales/getSales";
@@ -27,6 +28,7 @@ import { getDeliveries } from "./lib/deliveries/getDeliveries";
 import { getGift } from "./lib/gift/getGift";
 import { getCoupons } from "./lib/coupons/getCoupons";
 import { getCoupon } from "./lib/coupons/getCoupon";
+import { updateSale } from "./lib/sales/updateSale";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -57,6 +59,8 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     getStat: (params?: ColormeGetStatParams) => getStat(client, params),
     /** 受注データの取得 */
     getSale: (params: ColormeGetSaleParams) => getSale(client, params),
+    updateSale: (saleId: number, params: { sale: ColormeUpdateSaleParams }) =>
+      updateSale(client, saleId, params),
   };
   const customers = {
     /** 顧客データのリストを取得 */
