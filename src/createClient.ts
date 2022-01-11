@@ -1,5 +1,6 @@
 const axios = require("axios").default;
 import {
+  ColormeAddCustomerParams,
   ColormeCancelSaleParams,
   ColormeClient,
   ColormeGetCustomersParams,
@@ -29,6 +30,7 @@ import { getCoupon } from "./lib/coupons/getCoupon";
 import { updateSale } from "./lib/sales/updateSale";
 import { cancelSale } from "./lib/sales/cancelSale";
 import { sendMail } from "./lib/sales/sendMail";
+import { addCustomer } from "./lib/customers/addCustomer";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -117,6 +119,9 @@ export const createClient = ({ accessToken }: ColormeClient) => {
       /** 顧客ID */
       customerId: number
     ) => getCustomer(client, customerId),
+    /** 顧客データを追加 */
+    addCustomer: (params: ColormeAddCustomerParams) =>
+      addCustomer(client, params),
   };
   const products = {
     /** 商品一覧の取得 */

@@ -1427,3 +1427,22 @@ export type ColormeSendMailParams = {
    */
   type?: "accepted" | "paid" | "delivered";
 };
+
+export type ColormeAddCustomerParams = {
+  /** 購入者氏名 */
+  name: string;
+  /** メールアドレス */
+  mail: string;
+  /** 都道府県id */
+  pref_id: number;
+  /** 住所 */
+  address1: string;
+  /** 住所（建物名など） */
+  address2?: string;
+  /** 電話番号 */
+  tel: string;
+  /** 郵便番号 */
+  postal: string;
+  /** 会員登録をするか否か */
+  add_member?: boolean;
+};

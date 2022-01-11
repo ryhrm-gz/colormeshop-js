@@ -158,4 +158,21 @@ describe("createClient", () => {
       console.log(error.error);
     }
   });
+  //addCUstomer
+  test("addCustomer", async () => {
+    try {
+      console.log(
+        await client.customers.addCustomer({
+          name: "suzuki",
+          mail: "aaa@aa.com",
+          tel: "0009992222",
+          postal: "098-1205",
+          pref_id: 2,
+          address1: "南町",
+        })
+      );
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
 });
