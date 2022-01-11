@@ -33,7 +33,7 @@ describe("createClient", () => {
   //getSale
   test.skip("getSale", async () => {
     try {
-      await client.sales.getSale({ sale_id: 1 });
+      await client.sales.getSale(1);
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +49,7 @@ describe("createClient", () => {
   //getCustomer
   test.skip("getCustomer", async () => {
     try {
-      console.log(await client.customers.getCustomer({ customer_id: 1 }));
+      console.log(await client.customers.getCustomer(1));
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +65,7 @@ describe("createClient", () => {
   //getProduct
   test.skip("getProduct", async () => {
     try {
-      console.log(await client.products.getProduct({ product_id: 1 }));
+      console.log(await client.products.getProduct(1));
     } catch (error) {
       console.log(error);
     }
@@ -129,7 +129,7 @@ describe("createClient", () => {
   //getCoupon
   test.skip("getCoupon", async () => {
     try {
-      console.log(await client.coupons.getCoupon({ coupon_id: 1 }));
+      console.log(await client.coupons.getCoupon(1));
     } catch (error) {
       console.log(error);
     }

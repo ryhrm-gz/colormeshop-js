@@ -1219,11 +1219,6 @@ export type ColormeGetStatParams = {
   make_date?: string;
 };
 
-export type ColormeGetSaleParams = {
-  /** 受注ID */
-  sale_id: number;
-};
-
 export type ColormeGetCustomersParams = {
   /** 顧客IDで検索。カンマ区切りで複数指定可能 */
   ids?: string;
@@ -1260,11 +1255,6 @@ export type ColormeGetCustomersParams = {
   limit?: number;
   /** 指定した数値+1件目以降のデータを返す */
   offset?: number;
-};
-
-export type ColormeGetCustomerParams = {
-  /** 顧客ID */
-  customer_id: number;
 };
 
 export type ColormeGetProductsParams = {
@@ -1315,11 +1305,6 @@ export type ColormeGetProductsParams = {
   offset?: number;
 };
 
-export type ColormeGetProductParams = {
-  /** 商品ID */
-  product_id: number;
-};
-
 export type ColormeGetStocksParams = {
   /** 商品IDで検索。カンマ区切りにすることで複数検索が可能 */
   ids?: string;
@@ -1354,11 +1339,6 @@ export type ColormeGetStocksParams = {
   limit?: number;
   /** 指定した数値+1件目以降のデータを返す */
   offset?: number;
-};
-
-export type ColormeGetCouponParams = {
-  /** Coupon ID */
-  coupon_id: number;
 };
 
 export type ColormeUpdateSaleParams = {

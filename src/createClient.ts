@@ -1,12 +1,8 @@
 const axios = require("axios").default;
 import {
   ColormeClient,
-  ColormeGetCouponParams,
-  ColormeGetCustomerParams,
   ColormeGetCustomersParams,
-  ColormeGetProductParams,
   ColormeGetProductsParams,
-  ColormeGetSaleParams,
   ColormeGetSalesParams,
   ColormeGetStatParams,
   ColormeGetStocksParams,
@@ -58,7 +54,10 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     /** 売上集計の取得 */
     getStat: (params?: ColormeGetStatParams) => getStat(client, params),
     /** 受注データの取得 */
-    getSale: (params: ColormeGetSaleParams) => getSale(client, params),
+    getSale: (
+      /** 受注ID */
+      saleId: number
+    ) => getSale(client, saleId),
     /**
      * 受注データの更新
      * 該当受注の決済がAmazon Pay、LINE Pay、または楽天ペイ（オンライン決済）である場合は、熨斗・メッセージカード・ラッピングの手数料を更新すると、決済金額が自動的に購入者に請求もしくは返金されます。
@@ -73,15 +72,20 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     getCustomers: (params?: ColormeGetCustomersParams) =>
       getCustomers(client, params),
     /** 顧客データの取得 */
-    getCustomer: (params: ColormeGetCustomerParams) =>
-      getCustomer(client, params),
+    getCustomer: (
+      /** 顧客ID */
+      customerId: number
+    ) => getCustomer(client, customerId),
   };
   const products = {
     /** 商品一覧の取得 */
     getProducts: (params?: ColormeGetProductsParams) =>
       getProducts(client, params),
     /** 商品データの取得 */
-    getProduct: (params: ColormeGetProductParams) => getProduct(client, params),
+    getProduct: (
+      /** 商品ID */
+      productId: number
+    ) => getProduct(client, productId),
   };
   const stocks = {
     /**
@@ -114,7 +118,10 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     /** ショップクーポン一覧取得 */
     getCoupons: () => getCoupons(client),
     /** ショップクーポンの取得 */
-    getCoupon: (params: ColormeGetCouponParams) => getCoupon(client, params),
+    getCoupon: (
+      /** クーポンID */
+      coponId: number
+    ) => getCoupon(client, coponId),
   };
 
   return {

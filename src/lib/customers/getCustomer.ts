@@ -1,18 +1,18 @@
 import { AxiosError, AxiosInstance } from "axios";
-import { ColormeGetCustomerParams, ColormeCustomerResponse } from "../..";
+import { ColormeCustomerResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const getCustomer = async (
   client: AxiosInstance,
-  params: ColormeGetCustomerParams
+  customerId: number
 ): Promise<{ customer: ColormeCustomerResponse }> => {
-  if (!params.customer_id) {
+  if (!customerId) {
     throw {
       message: "customer_id is required",
     };
   }
   try {
-    const response = await client.get(`customers/${params.customer_id}`);
+    const response = await client.get(`customers/${customerId}`);
     return response.data;
   } catch (error: AxiosError | any) {
     throw errorHandler(error);
