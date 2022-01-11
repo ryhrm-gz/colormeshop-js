@@ -137,11 +137,7 @@ describe("createClient", () => {
   //updateSale
   test.skip("updateSale", async () => {
     try {
-      console.log(
-        await client.sales.updateSale(1, {
-          sale: { paid: false },
-        })
-      );
+      console.log(await client.sales.updateSale(1, { paid: false }));
     } catch (error) {
       console.log(error.error);
     }
