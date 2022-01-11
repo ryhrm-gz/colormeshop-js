@@ -5,6 +5,7 @@ import {
   ColormeAddProductParams,
   ColormeCancelSaleParams,
   ColormeClient,
+  ColormeDeletePickupParams,
   ColormeGetCustomersParams,
   ColormeGetProductsParams,
   ColormeGetSalesParams,
@@ -37,6 +38,7 @@ import { addCustomer } from "./lib/customers/addCustomer";
 import { addProduct } from "./lib/products/addProduct";
 import { updateProduct } from "./lib/products/updateProduct";
 import { addPickup } from "./lib/products/addPickup";
+import { deletePickup } from "./lib/products/deletePickup";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -155,6 +157,12 @@ export const createClient = ({ accessToken }: ColormeClient) => {
       productId: number,
       params: ColormeAddPickupParams
     ) => addPickup(client, productId, params),
+    /**
+     * おすすめ商品情報の削除
+     * 商品に付加されたおすすめ商品情報を削除します
+     */
+    deletePickup: (params: ColormeDeletePickupParams) =>
+      deletePickup(client, params),
   };
   const stocks = {
     /**

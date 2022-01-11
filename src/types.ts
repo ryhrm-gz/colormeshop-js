@@ -1575,3 +1575,10 @@ export type ColormeAddPickupParams = {
   /** 商品の表示順 0以上 */
   order_num?: number;
 };
+
+export type ColormeDeletePickupParams = {
+  /** 商品ID */
+  product_id: number;
+  /** おすすめ商品情報種別（0:おすすめ商品, 1:売れ筋商品, 3:新着商品, 4:イチオシ商品） */
+  pickup_type?: 0 | 1 | 3 | 4;
+};

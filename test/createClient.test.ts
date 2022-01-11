@@ -201,12 +201,25 @@ describe("createClient", () => {
     }
   });
   //addPickup
-  test("addPickup", async () => {
+  test.skip("addPickup", async () => {
     try {
       console.log(
         await client.products.addPickup(1, {
           pickup_type: 0,
           order_num: 2,
+        })
+      );
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
+  //deletePickup
+  test("deletePickup", async () => {
+    try {
+      console.log(
+        await client.products.deletePickup({
+          product_id: 166040040,
+          pickup_type: 0,
         })
       );
     } catch (error) {
