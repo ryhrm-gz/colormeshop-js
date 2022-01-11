@@ -150,4 +150,12 @@ describe("createClient", () => {
       console.log(error.error);
     }
   });
+  //sendMail
+  test.skip("sendMail", async () => {
+    try {
+      await client.sales.sendMail(1, { type: "delivered" });
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
 });

@@ -1416,3 +1416,14 @@ export type ColormeCancelSaleParams = {
   /** `true`の場合、在庫管理している商品について、購入された分の在庫数を充当する */
   restock: boolean;
 };
+
+export type ColormeSendMailParams = {
+  /**
+   * 送信するメールの種類
+   *
+   * - `accepted`: 受注メールを送信する
+   * - `paid`: 入金確認メールを送信する
+   * - `delivered`: 商品発送メールを送信する
+   */
+  type?: "accepted" | "paid" | "delivered";
+};

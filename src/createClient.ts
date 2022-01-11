@@ -7,6 +7,7 @@ import {
   ColormeGetSalesParams,
   ColormeGetStatParams,
   ColormeGetStocksParams,
+  ColormeSendMailParams,
   ColormeUpdateSaleParams,
 } from ".";
 import { getShop } from "./lib/shop/getShop";
@@ -27,6 +28,7 @@ import { getCoupons } from "./lib/coupons/getCoupons";
 import { getCoupon } from "./lib/coupons/getCoupon";
 import { updateSale } from "./lib/sales/updateSale";
 import { cancelSale } from "./lib/sales/cancelSale";
+import { sendMail } from "./lib/sales/sendMail";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -66,8 +68,11 @@ export const createClient = ({ accessToken }: ColormeClient) => {
      *
      * ただし、LINE Payの場合は、決済金額の変更は減額のみ行うことができます。
      */
-    updateSale: (saleId: number, params: ColormeUpdateSaleParams) =>
-      updateSale(client, saleId, params),
+    updateSale: (
+      /** 受注ID */
+      saleId: number,
+      params: ColormeUpdateSaleParams
+    ) => updateSale(client, saleId, params),
     /**
      * 受注のキャンセル
      * 受注をキャンセルすると、以下のことが起こります。
@@ -88,8 +93,20 @@ export const createClient = ({ accessToken }: ColormeClient) => {
      * 現在、以下の機能はサポートしていません。
      * - キャンセル連動設定を利用した、クレジット（イプシロン）決済のキャンセル
      */
-    caenceSale: (saleId: number, params: ColormeCancelSaleParams) =>
-      cancelSale(client, saleId, params),
+    caenceSale: (
+      /** 受注ID */
+      saleId: number,
+      params: ColormeCancelSaleParams
+    ) => cancelSale(client, saleId, params),
+    /**
+     * メールの送信
+     * 受注・入金確認・商品発送メールを送ることができます
+     */
+    sendMail: (
+      /** 受注ID */
+      saleId: number,
+      params: ColormeSendMailParams
+    ) => sendMail(client, saleId, params),
   };
   const customers = {
     /** 顧客データのリストを取得 */
