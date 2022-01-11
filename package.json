@@ -1,7 +1,7 @@
 {
   "name": "colormeshop-js",
   "description": "JavaScript client for ColoeMeShop API",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Ryo Hirama",
   "license": "MIT",
   "repository": {
