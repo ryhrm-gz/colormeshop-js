@@ -1140,6 +1140,21 @@ export type ColormeCouponResponse = {
   updated_at?: number;
 };
 
+export type ColormePickupResponse = {
+  /** おすすめ商品情報種別 */
+  pickup_type?: number;
+  /** 商品ID */
+  product_id?: number;
+  /** ショップアカウントID */
+  account_id?: string;
+  /** 商品の表示順 */
+  order_num?: number | null;
+  /** 作成日時 */
+  make_date?: number;
+  /** 更新日時 */
+  update_date?: number;
+};
+
 /*
 
 Params
@@ -1552,4 +1567,11 @@ export type ColormeUpdateProductParams = {
   }[];
   /** `true` の場合は軽減税率対象 */
   tax_reduced?: boolean;
+};
+
+export type ColormeAddPickupParams = {
+  /** おすすめ商品情報種別（0:おすすめ商品, 1:売れ筋商品, 3:新着商品, 4:イチオシ商品） */
+  pickup_type?: 0 | 1 | 3 | 4;
+  /** 商品の表示順 0以上 */
+  order_num?: number;
 };

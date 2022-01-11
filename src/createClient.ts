@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 import {
   ColormeAddCustomerParams,
+  ColormeAddPickupParams,
   ColormeAddProductParams,
   ColormeCancelSaleParams,
   ColormeClient,
@@ -35,6 +36,7 @@ import { sendMail } from "./lib/sales/sendMail";
 import { addCustomer } from "./lib/customers/addCustomer";
 import { addProduct } from "./lib/products/addProduct";
 import { updateProduct } from "./lib/products/updateProduct";
+import { addPickup } from "./lib/products/addPickup";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -144,6 +146,15 @@ export const createClient = ({ accessToken }: ColormeClient) => {
       productId: number,
       params: ColormeUpdateProductParams
     ) => updateProduct(client, productId, params),
+    /**
+     * おすすめ商品情報の追加
+     * おすすめ商品情報(おすすめ商品、売れ筋商品、新着商品、イチオシ商品のいずれか)を商品に追加します。
+     */
+    addPickup: (
+      /** 商品ID */
+      productId: number,
+      params: ColormeAddPickupParams
+    ) => addPickup(client, productId, params),
   };
   const stocks = {
     /**

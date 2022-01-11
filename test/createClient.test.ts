@@ -200,4 +200,17 @@ describe("createClient", () => {
       console.log(error.error);
     }
   });
+  //addPickup
+  test("addPickup", async () => {
+    try {
+      console.log(
+        await client.products.addPickup(1, {
+          pickup_type: 0,
+          order_num: 2,
+        })
+      );
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
 });
