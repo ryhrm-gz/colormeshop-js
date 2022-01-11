@@ -65,7 +65,7 @@ export const createClient = ({ accessToken }: ColormeClient) => {
      * ただし、LINE Payの場合は、決済金額の変更は減額のみ行うことができます。
      */
     updateSale: (saleId: number, params: ColormeUpdateSaleParams) =>
-      updateSale(client, saleId, { sale: params }),
+      updateSale(client, saleId, params),
   };
   const customers = {
     /** 顧客データのリストを取得 */

@@ -135,9 +135,9 @@ describe("createClient", () => {
     }
   });
   //updateSale
-  test.skip("updateSale", async () => {
+  test("updateSale", async () => {
     try {
-      console.log(await client.sales.updateSale(1, { paid: false }));
+      await client.sales.updateSale(1, { paid: true });
     } catch (error) {
       console.log(error.error);
     }
