@@ -214,11 +214,11 @@ describe("createClient", () => {
     }
   });
   //deletePickup
-  test("deletePickup", async () => {
+  test.skip("deletePickup", async () => {
     try {
       console.log(
         await client.products.deletePickup({
-          product_id: 166040040,
+          product_id: 1,
           pickup_type: 0,
         })
       );
