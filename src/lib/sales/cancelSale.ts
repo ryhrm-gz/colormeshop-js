@@ -8,7 +8,7 @@ export const cancelSale = async (
   params: ColormeCancelSaleParams
 ): Promise<{ sale: ColormeSaleResponse }> => {
   try {
-    const response = await client.put(`sales/${saleId}/cancel`);
+    const response = await client.put(`sales/${saleId}/cancel`, { params });
     return response.data;
   } catch (error: AxiosError | any) {
     throw errorHandler(error);
