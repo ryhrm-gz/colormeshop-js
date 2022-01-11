@@ -6,3 +6,4 @@ dist-ssr
 types
 package-lock.json
 .env
+test

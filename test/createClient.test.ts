@@ -166,7 +166,7 @@ describe("createClient", () => {
           name: "suzuki",
           mail: "aaa@aa.com",
           tel: "0009992222",
-          postal: "098-1205",
+          postal: "123-1234",
           pref_id: 2,
           address1: "南町",
         })
@@ -181,7 +181,19 @@ describe("createClient", () => {
       console.log(
         await client.products.addProduct({
           name: "tamago",
-          category_id_big: 2774916,
+          category_id_big: 1,
+        })
+      );
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
+  //updateProduct
+  test.skip("updateProduct", async () => {
+    try {
+      console.log(
+        await client.products.updateProduct(1, {
+          name: "kunsei",
         })
       );
     } catch (error) {

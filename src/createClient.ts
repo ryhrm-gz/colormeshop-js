@@ -10,6 +10,7 @@ import {
   ColormeGetStatParams,
   ColormeGetStocksParams,
   ColormeSendMailParams,
+  ColormeUpdateProductParams,
   ColormeUpdateSaleParams,
 } from ".";
 import { getShop } from "./lib/shop/getShop";
@@ -33,6 +34,7 @@ import { cancelSale } from "./lib/sales/cancelSale";
 import { sendMail } from "./lib/sales/sendMail";
 import { addCustomer } from "./lib/customers/addCustomer";
 import { addProduct } from "./lib/products/addProduct";
+import { updateProduct } from "./lib/products/updateProduct";
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   if (!accessToken) {
@@ -136,6 +138,12 @@ export const createClient = ({ accessToken }: ColormeClient) => {
     ) => getProduct(client, productId),
     /** 商品データの追加 */
     addProduct: (params: ColormeAddProductParams) => addProduct(client, params),
+    /** 商品データの更新 */
+    updateProduct: (
+      /** 商品ID */
+      productId: number,
+      params: ColormeUpdateProductParams
+    ) => updateProduct(client, productId, params),
   };
   const stocks = {
     /**

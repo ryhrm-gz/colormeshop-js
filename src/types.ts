@@ -1473,3 +1473,83 @@ export type ColormeAddProductParams = {
   /** `true` の場合は軽減税率対象 */
   tax_reduced?: boolean;
 };
+
+export type ColormeUpdateProductParams = {
+  /** 商品名 */
+  name?: string;
+  /** 定価 */
+  price?: number;
+  /** 大カテゴリーID */
+  category_id_big?: number;
+  /** 小カテゴリーID */
+  category_id_small?: number;
+  /** 原価 */
+  cost?: number;
+  /**
+   * 販売価格
+   * フリープランを利用しているショップの場合、最低価格は100円です。
+   */
+  sales_price?: number;
+  /**
+   * 会員価格
+   * フリープランを利用しているショップの場合、最低価格は100円です。
+   */
+  members_price?: number;
+  /** 型番 */
+  model_number?: string;
+  /** 商品説明 */
+  expl?: string;
+  /** 簡易説明 */
+  simple_expl?: string;
+  /** スマホ向けショップの商品説明 */
+  smartphone_expl?: string;
+  /**
+   * 掲載設定
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `showing_for_members`: 会員にのみ掲載
+   * - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** 在庫管理する場合は `true` */
+  stock_managed?: boolean;
+  /**
+   * 数値を指定した場合は、在庫数をその数値で更新します。(商品オプションごとに在庫管理している場合、このパラメータは無視されます)
+   *
+   * 以下のように`increment`を利用すると、その数値だけ在庫数を増減させることが可能です。(負の値も指定可)
+   * ```json
+   * "stocks": {
+   *   "increment": 3
+   * }
+   * ```
+   */
+  stocks?:
+    | {
+        /** 在庫数の増減値 */
+        increment?: number;
+      }
+    | number;
+  /** グループIDの配列 */
+  group_ids?: number[];
+  /** 商品オプションによるバリエーションごとに更新 */
+  variants?: {
+    /** オプション1の値 */
+    option1_value?: string;
+    /** オプション2の値 */
+    option2_value?: string;
+    /** 上記`stocks`と同様に、数値、または増減値を用いて在庫数を更新できます。 */
+    stocks?:
+      | {
+          /** 在庫数の増減値 */
+          increment?: number;
+        }
+      | number;
+  }[];
+  /** `true` の場合は軽減税率対象 */
+  tax_reduced?: boolean;
+};
