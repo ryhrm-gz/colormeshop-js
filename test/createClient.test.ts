@@ -135,9 +135,17 @@ describe("createClient", () => {
     }
   });
   //updateSale
-  test("updateSale", async () => {
+  test.skip("updateSale", async () => {
     try {
       await client.sales.updateSale(1, { paid: true });
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
+  //canselSale
+  test.skip("cancelSale", async () => {
+    try {
+      console.log(await client.sales.caenceSale(1, { restock: true }));
     } catch (error) {
       console.log(error.error);
     }

@@ -1,16 +1,14 @@
 import { AxiosError, AxiosInstance } from "axios";
-import { ColormeUpdateSaleParams, ColormeSaleResponse } from "../..";
+import { ColormeCancelSaleParams, ColormeSaleResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
-export const updateSale = async (
+export const cancelSale = async (
   client: AxiosInstance,
   saleId: number,
-  params: ColormeUpdateSaleParams
+  params: ColormeCancelSaleParams
 ): Promise<{ sale: ColormeSaleResponse }> => {
   try {
-    const response = await client.put(`sales/${saleId}`, {
-      sale: params,
-    });
+    const response = await client.put(`sales/${saleId}/cancel`);
     return response.data;
   } catch (error: AxiosError | any) {
     throw errorHandler(error);

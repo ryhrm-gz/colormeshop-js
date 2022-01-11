@@ -1411,3 +1411,8 @@ export type ColormeUpdateSaleParams = {
     delivered?: boolean;
   }[];
 };
+
+export type ColormeCancelSaleParams = {
+  /** `true`の場合、在庫管理している商品について、購入された分の在庫数を充当する */
+  restock: boolean;
+};
