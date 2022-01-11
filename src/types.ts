@@ -1446,3 +1446,30 @@ export type ColormeAddCustomerParams = {
   /** 会員登録をするか否か */
   add_member?: boolean;
 };
+
+export type ColormeAddProductParams = {
+  /** 商品名 */
+  name: string;
+  /** 大カテゴリーID */
+  category_id_big: number;
+  /**
+   * 販売価格
+   * フリープランを利用しているショップの場合、最低価格は100円です。
+   */
+  sales_price?: number;
+  /**
+   * 掲載設定
+   *
+   * - `showing`: 掲載状態
+   * - `hidden`: 非掲載状態
+   * - `showing_for_members`: 会員にのみ掲載
+   * - `sale_for_members`: 掲載状態だが購入は会員のみ可能
+   */
+  display_state?:
+    | "showing"
+    | "hidden"
+    | "showing_for_members"
+    | "sale_for_members";
+  /** `true` の場合は軽減税率対象 */
+  tax_reduced?: boolean;
+};

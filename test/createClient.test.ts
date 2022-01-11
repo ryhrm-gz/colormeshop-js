@@ -158,8 +158,8 @@ describe("createClient", () => {
       console.log(error.error);
     }
   });
-  //addCUstomer
-  test("addCustomer", async () => {
+  //addCustomer
+  test.skip("addCustomer", async () => {
     try {
       console.log(
         await client.customers.addCustomer({
@@ -169,6 +169,19 @@ describe("createClient", () => {
           postal: "098-1205",
           pref_id: 2,
           address1: "南町",
+        })
+      );
+    } catch (error) {
+      console.log(error.error);
+    }
+  });
+  //addProduct
+  test.skip("addProduct", async () => {
+    try {
+      console.log(
+        await client.products.addProduct({
+          name: "tamago",
+          category_id_big: 2774916,
         })
       );
     } catch (error) {
