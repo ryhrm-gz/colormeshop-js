@@ -9,8 +9,8 @@ export const createCoupons = (client: AxiosInstance) => {
     /** ショップクーポンの取得 */
     getCoupon: (
       /** クーポンID */
-      coponId: number
-    ) => getCoupon(client, coponId),
+      couponId: number
+    ) => getCoupon(client, couponId),
   };
 
   return coupons;
