@@ -58,7 +58,7 @@ export const createSales = (client: AxiosInstance) => {
      * 現在、以下の機能はサポートしていません。
      * - キャンセル連動設定を利用した、クレジット（イプシロン）決済のキャンセル
      */
-    caenceSale: (
+    cancelSale: (
       /** 受注ID */
       saleId: number,
       params: ColormeCancelSaleParams
