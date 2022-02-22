@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios").default;
 import { ColormeClient } from "..";
 
 export const createAxiosClient = ({ accessToken }: ColormeClient) => {
