@@ -1155,11 +1155,58 @@ export type ColormePickupResponse = {
   update_date?: number;
 };
 
+export type ColormeOptionsResponse = {
+  /** 商品ID */
+  product_id?: number;
+  /** ショップアカウントID */
+  account_id?: string;
+  /** オプション1の値 */
+  option1_value?: string | null;
+  /** オプション2の値 */
+  option2_value?: string | null;
+  /** オプション1とオプション2の名前を"　x　"で結合した表示名。オプションが1つしか設定されていない場合はそのオプションの名前に等しい */
+  title?: string;
+  /** 在庫数 */
+  stocks?: number | null;
+  /** 残りわずかとなる在庫数 */
+  few_num?: number | null;
+  /** 型番 */
+  model_number?: string | null;
+  /** 販売価格 */
+  option_price?: number | null;
+  /** 消費税込販売価格 */
+  option_price_including_tax?: number;
+  /** 消費税額 */
+  option_price_tax?: number;
+  /** 会員価格 */
+  option_members_price?: number | null;
+  /** 消費税込会員価格 */
+  option_members_price_including_tax?: number;
+  /** 会員価格の消費税額 */
+  option_members_price_tax?: number;
+  /** オプション作成日時 */
+  make_date?: number;
+  /** オプション更新日時 */
+  update_date?: number;
+};
+
 /*
 
 Params
 
 */
+
+export type ColormeGetOptionsParams = {
+  /** 型番で部分一致検索 */
+  model_number?: string;
+  /** レスポンスJSONのキーをカンマ区切りで指定 */
+  fields?: string;
+  /** レスポンスの件数を指定。指定がない場合は10。最大50 */
+  limit?: number;
+  /** 指定した数値+1件目以降のデータを返す */
+  offset?: number;
+};
+
 export type ColormeGetSalesParams = {
   /** 受注IDで検索。カンマ区切りで複数指定可能 */
   ids?: string;

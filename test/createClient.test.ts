@@ -145,7 +145,7 @@ describe("createClient", () => {
   //canselSale
   test.skip("cancelSale", async () => {
     try {
-      console.log(await client.sales.caenceSale(1, { restock: true }));
+      console.log(await client.sales.cancelSale(1, { restock: true }));
     } catch (error) {
       console.log(error.error);
     }
