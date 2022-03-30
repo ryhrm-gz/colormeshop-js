@@ -6,9 +6,11 @@ import {
   ColormeGetProductsParams,
   ColormeUpdateProductParams,
 } from "../..";
+import { ColormeGetOptionsParams } from "../../types";
 import { addPickup } from "./addPickup";
 import { addProduct } from "./addProduct";
 import { deletePickup } from "./deletePickup";
+import { getOptions } from "./getOptions";
 import { getProduct } from "./getProduct";
 import { getProducts } from "./getProducts";
 import { updateProduct } from "./updateProduct";
@@ -31,6 +33,12 @@ export const createProducts = (client: AxiosInstance) => {
       productId: number,
       params: ColormeUpdateProductParams
     ) => updateProduct(client, productId, params),
+    /** 商品オプション一覧の取得 */
+    getOptions: (
+      /** 商品ID */
+      productId: number,
+      params?: ColormeGetOptionsParams
+    ) => getOptions(client, productId, params),
     /**
      * おすすめ商品情報の追加
      * おすすめ商品情報(おすすめ商品、売れ筋商品、新着商品、イチオシ商品のいずれか)を商品に追加します。
