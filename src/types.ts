@@ -407,7 +407,7 @@ export type ColormeSaleResponse = {
    */
   external_order_id?: string;
   customer?: ColormeCustomerResponse;
-  detail?: ColormeDetailResponse[];
+  details?: ColormeDetailResponse[];
   sale_deliveries?: ColormeSaleDeliveryResponse[];
 };
 
