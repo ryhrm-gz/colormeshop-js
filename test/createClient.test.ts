@@ -2,7 +2,7 @@ import { describe, test } from "vitest";
 require("dotenv").config();
 import { createClient } from "../src/index";
 
-const accessToken = process.env.COLORME_ACCESS_TOKEN;
+const accessToken = process.env.COLORME_ACCESS_TOKEN ?? "";
 
 describe("createClient", () => {
   const client = createClient({ accessToken });
