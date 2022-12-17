@@ -1,10 +1,9 @@
-import { AxiosInstance } from "axios";
 import { ColormeAddCustomerParams, ColormeGetCustomersParams } from "../..";
 import { addCustomer } from "./addCustomer";
 import { getCustomer } from "./getCustomer";
 import { getCustomers } from "./getCustomers";
 
-export const createCustomers = (client: AxiosInstance) => {
+export const createCustomers = (client: any) => {
   const customers = {
     /** 顧客データのリストを取得 */
     getCustomers: (params?: ColormeGetCustomersParams) =>

@@ -1,9 +1,8 @@
-import { AxiosError, AxiosInstance } from "axios";
 import { ColormeAddPickupParams, ColormePickupResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const addPickup = async (
-  client: AxiosInstance,
+  client: any,
   productId: number,
   params: ColormeAddPickupParams
 ): Promise<{ pickup: ColormePickupResponse[] }> => {
@@ -11,7 +10,7 @@ export const addPickup = async (
   try {
     const response = await client.post(`products/${productId}/pickups`, params);
     return response.data;
-  } catch (error: AxiosError | any) {
+  } catch (error) {
     throw errorHandler(error);
   }
 };

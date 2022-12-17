@@ -1,14 +1,13 @@
-import { AxiosError, AxiosInstance } from "axios";
 import { ColormeCouponResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const getCoupons = async (
-  client: AxiosInstance
+  client: any
 ): Promise<{ shop_coupons: ColormeCouponResponse[] }> => {
   try {
     const response = await client.get("shop_coupons");
     return response.data;
-  } catch (error: AxiosError | any) {
+  } catch (error) {
     throw errorHandler(error);
   }
 };

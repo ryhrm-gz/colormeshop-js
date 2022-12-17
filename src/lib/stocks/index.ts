@@ -1,8 +1,7 @@
-import { AxiosInstance } from "axios";
 import { ColormeGetStocksParams } from "../..";
 import { getStocks } from "./getStocks";
 
-export const createStocks = (client: AxiosInstance) => {
+export const createStocks = (client: any) => {
   const stocks = {
     /**
      * 在庫情報の取得

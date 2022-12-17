@@ -1,9 +1,8 @@
-import { AxiosError, AxiosInstance } from "axios";
 import { ColormeSendMailParams } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const sendMail = async (
-  client: AxiosInstance,
+  client: any,
   saleId: number,
   params: ColormeSendMailParams
 ) => {
@@ -12,7 +11,7 @@ export const sendMail = async (
       mail: params,
     });
     return response.data;
-  } catch (error: AxiosError | any) {
+  } catch (error) {
     throw errorHandler(error);
   }
 };

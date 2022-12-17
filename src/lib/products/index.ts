@@ -1,4 +1,3 @@
-import { AxiosInstance } from "axios";
 import {
   ColormeAddPickupParams,
   ColormeAddProductParams,
@@ -15,7 +14,7 @@ import { getProduct } from "./getProduct";
 import { getProducts } from "./getProducts";
 import { updateProduct } from "./updateProduct";
 
-export const createProducts = (client: AxiosInstance) => {
+export const createProducts = (client: any) => {
   const products = {
     /** 商品一覧の取得 */
     getProducts: (params?: ColormeGetProductsParams) =>

@@ -1,7 +1,6 @@
-import { AxiosInstance } from "axios";
 import { getShop } from "./getShop";
 
-export const createShop = (client: AxiosInstance) => {
+export const createShop = (client: any) => {
   const shop = {
     /**
      * ショップ情報の取得

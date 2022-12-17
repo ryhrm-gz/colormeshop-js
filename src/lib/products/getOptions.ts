@@ -1,4 +1,3 @@
-import { AxiosError, AxiosInstance } from "axios";
 import {
   ColormeGetOptionsParams,
   ColormeMeta,
@@ -7,7 +6,7 @@ import {
 import { errorHandler } from "../errorHandler";
 
 export const getOptions = async (
-  client: AxiosInstance,
+  client: any,
   productId: number,
   params?: ColormeGetOptionsParams
 ): Promise<{ variants: ColormeOptionsResponse[]; meta: ColormeMeta }> => {
@@ -16,7 +15,7 @@ export const getOptions = async (
       params,
     });
     return response.data;
-  } catch (error: AxiosError | any) {
+  } catch (error) {
     throw errorHandler(error);
   }
 };
