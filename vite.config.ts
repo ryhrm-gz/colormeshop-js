@@ -11,10 +11,11 @@ export default defineConfig({
       fileName: (format) => `colormeshop-js.${format}.js`,
     },
     rollupOptions: {
-      external: ["axios"],
+      external: ["axios", "redaxios"],
       output: {
         globals: {
           axios: "axios",
+          redaxios: "redaxios",
         },
       },
     },
