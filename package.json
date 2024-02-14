@@ -28,7 +28,8 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
-    "test": "vitest"
+    "test": "vitest",
+    "generate": "openapi-typescript https://api.shop-pro.jp/v1/spec/open_api.json -o ./src/generated/types.gen.ts"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
