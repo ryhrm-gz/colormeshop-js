@@ -1,7 +1,7 @@
 {
   "name": "colormeshop-js",
   "description": "JavaScript client for ColorMeShop API",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "author": "Ryo Hirama",
   "license": "MIT",
   "repository": {
@@ -27,7 +27,7 @@
     "/types"
   ],
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc --noEmit && vite build",
     "test": "vitest",
     "generate": "openapi-typescript https://api.shop-pro.jp/v1/spec/open_api.json -o ./src/generated/types.gen.ts"
   },
@@ -41,6 +41,7 @@
     "vitest": "^0.25.8"
   },
   "dependencies": {
+    "redaxios": "^0.5.1",
     "axios": "^1.2.1"
   }
 }

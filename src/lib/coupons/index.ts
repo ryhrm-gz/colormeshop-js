@@ -1,8 +1,7 @@
-import { AxiosInstance } from "axios";
 import { getCoupon } from "./getCoupon";
 import { getCoupons } from "./getCoupons";
 
-export const createCoupons = (client: AxiosInstance) => {
+export const createCoupons = (client: any) => {
   const coupons = {
     /** ショップクーポン一覧取得 */
     getCoupons: () => getCoupons(client),

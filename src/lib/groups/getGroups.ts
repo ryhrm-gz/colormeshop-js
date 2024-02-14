@@ -1,14 +1,13 @@
-import { AxiosError, AxiosInstance } from "axios";
 import { ColormeGroupResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const getGroups = async (
-  client: AxiosInstance
+  client: any
 ): Promise<{ groups: ColormeGroupResponse[] }> => {
   try {
     const response = await client.get("groups");
     return response.data;
-  } catch (error: AxiosError | any) {
+  } catch (error) {
     throw errorHandler(error);
   }
 };

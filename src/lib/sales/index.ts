@@ -1,4 +1,3 @@
-import { AxiosInstance } from "axios";
 import {
   ColormeCancelSaleParams,
   ColormeGetSalesParams,
@@ -13,7 +12,7 @@ import { getStat } from "./getStat";
 import { sendMail } from "./sendMail";
 import { updateSale } from "./updateSale";
 
-export const createSales = (client: AxiosInstance) => {
+export const createSales = (client: any) => {
   const sales = {
     /**
      * 受注データのリストを取得

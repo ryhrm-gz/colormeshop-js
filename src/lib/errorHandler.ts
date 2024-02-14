@@ -1,7 +1,6 @@
-import { AxiosError } from "axios";
 import { ColormeError } from "..";
 
-export const errorHandler = (error: AxiosError): ColormeError => {
+export const errorHandler = (error: any): ColormeError => {
   if (error.response) {
     const res = {
       status: error.response.status,

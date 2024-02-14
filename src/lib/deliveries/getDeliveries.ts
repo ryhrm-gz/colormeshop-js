@@ -1,14 +1,13 @@
-import { AxiosError, AxiosInstance } from "axios";
 import { ColormeDeliveryResponse } from "../..";
 import { errorHandler } from "../errorHandler";
 
 export const getDeliveries = async (
-  client: AxiosInstance
+  client: any
 ): Promise<{ deliveries: ColormeDeliveryResponse[] }> => {
   try {
     const response = await client.get("deliveries");
     return response.data;
-  } catch (error: AxiosError | any) {
+  } catch (error) {
     throw errorHandler(error);
   }
 };
