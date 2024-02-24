@@ -6,39 +6,10 @@
 
 ColormeShop API Document: https://developer.shop-pro.jp/docs/colorme-api
 
-## Getting Started
-
-### Install
-
-```bash
-npm i colormeshop-js
-```
-
-or
-
-```bash
-yarn add colormeshop-js
-```
-
-### How to use
-
-#### 1. Import the library
-
-CommonJS
+## How to use
 
 ```javascript
-const { createClient } = require("colormeshop-js");
+import { getProducts } from 'colormeshop-js';
+
+const { data, error } = await getProducts('your-api-key');
 ```
-
-ES6
-
-```javascript
-import { createClient } from "colormeshop-js";
-```
-
-#### 2. Create a Client
-
-```javascript
-const client = createClient({ accessToken: "Your access token" });
-```
-
