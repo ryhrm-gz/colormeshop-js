@@ -1,19 +1,8 @@
-import { ColormeSaleResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeSaleResponse } from '../../types';
 
-export const getSale = async (
-  client: any,
-  saleId: number
-): Promise<{ sale: ColormeSaleResponse }> => {
-  if (!saleId) {
-    throw {
-      message: "sale_id is required",
-    };
-  }
-  try {
-    const response = await client.get(`sales/${saleId}`);
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getSale = async (apiKey: string, saleId: string) => {
+  return await client<ColormeSaleResponse>(apiKey, `/v1/sales`, 'GET', {
+    paths: [saleId],
+  });
 };

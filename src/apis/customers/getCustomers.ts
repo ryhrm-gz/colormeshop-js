@@ -1,18 +1,19 @@
+import { client } from '../../client';
 import {
-  ColormeCustomerResponse,
-  ColormeGetCustomersParams,
-  ColormeMeta,
-} from "../..";
-import { errorHandler } from "../errorHandler";
+  ColormeCustomersResponse,
+  ColormeGetCustomersQuery,
+} from '../../types';
 
 export const getCustomers = async (
-  client: any,
-  params?: ColormeGetCustomersParams
-): Promise<{ customers: ColormeCustomerResponse[]; meta: ColormeMeta }> => {
-  try {
-    const response = await client.get("customers", { params });
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+  apiKey: string,
+  query?: ColormeGetCustomersQuery
+) => {
+  return await client<ColormeCustomersResponse>(
+    apiKey,
+    '/v1/customers',
+    'GET',
+    {
+      query,
+    }
+  );
 };

@@ -1,13 +1,6 @@
-import { ColormeShopResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { ColormeShopResponse } from '../..';
+import { client } from '../../client';
 
-export const getShop = async (
-  client: any
-): Promise<{ shop: ColormeShopResponse }> => {
-  try {
-    const response = await client.get("shop");
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getShop = async (apiKey: string) => {
+  return await client<ColormeShopResponse>(apiKey, '/v1/shop', 'GET');
 };

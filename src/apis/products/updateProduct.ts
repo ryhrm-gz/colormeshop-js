@@ -1,17 +1,16 @@
-import { ColormeUpdateProductParams, ColormeProductResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import {
+  ColormeProductResponse,
+  ColormeUpdateProductRequestBody,
+} from '../../types';
 
 export const updateProduct = async (
-  client: any,
-  productId: number,
-  params: ColormeUpdateProductParams
-): Promise<{ product: ColormeProductResponse }> => {
-  try {
-    const response = await client.put(`products/${productId}`, {
-      product: params,
-    });
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+  apiKey: string,
+  productId: string,
+  body: ColormeUpdateProductRequestBody
+) => {
+  return await client<ColormeProductResponse>(apiKey, '/v1/products', 'PUT', {
+    paths: [productId],
+    body,
+  });
 };

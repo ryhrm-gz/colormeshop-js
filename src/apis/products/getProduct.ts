@@ -1,19 +1,8 @@
-import { ColormeProductResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeProductResponse } from '../../types';
 
-export const getProduct = async (
-  client: any,
-  productId: number
-): Promise<{ product: ColormeProductResponse }> => {
-  if (!productId) {
-    throw {
-      message: "product_id is required",
-    };
-  }
-  try {
-    const response = await client.get(`products/${productId}`);
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getProduct = async (apiKey: string, productId: string) => {
+  return await client<ColormeProductResponse>(apiKey, '/v1/products', 'GET', {
+    paths: [productId],
+  });
 };

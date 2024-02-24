@@ -1,13 +1,14 @@
-import { ColormeDeliveryResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeDeliveriesResponse } from '../../types';
 
-export const getDeliveries = async (
-  client: any
-): Promise<{ deliveries: ColormeDeliveryResponse[] }> => {
-  try {
-    const response = await client.get("deliveries");
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getDeliveries = async (apiKey: string) => {
+  return await client<ColormeDeliveriesResponse>(
+    apiKey,
+    '/v1/deliveries',
+    'GET'
+  );
 };
+
+getDeliveries(
+  '5920abd3832915c2561ee9eb073d7c993a57f82887ed9f5ff777b1fd3f593480'
+).then(console.log);

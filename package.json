@@ -28,20 +28,12 @@
   ],
   "scripts": {
     "build": "tsc --noEmit && vite build",
-    "test": "vitest",
     "generate": "openapi-typescript https://api.shop-pro.jp/v1/spec/open_api.json -o ./src/generated/types.gen.ts"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/node": "^20.11.17",
     "openapi-typescript": "^6.7.4",
-    "openapi-typescript-helpers": "^0.0.6",
     "typescript": "^5.3.3",
-    "vite": "^5.1.1",
-    "vitest": "^1.2.2"
-  },
-  "dependencies": {
-    "axios": "^1.6.7",
-    "redaxios": "^0.5.1"
+    "vite": "^5.1.1"
   }
 }

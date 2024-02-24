@@ -1,2 +1,1 @@
-export { createClient } from "./createClient";
-export * from "./types";
+export * from './types';

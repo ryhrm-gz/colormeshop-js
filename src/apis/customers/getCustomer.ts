@@ -1,19 +1,8 @@
-import { ColormeCustomerResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeCustomerResponse } from '../../types';
 
-export const getCustomer = async (
-  client: any,
-  customerId: number
-): Promise<{ customer: ColormeCustomerResponse }> => {
-  if (!customerId) {
-    throw {
-      message: "customer_id is required",
-    };
-  }
-  try {
-    const response = await client.get(`customers/${customerId}`);
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getCustomer = async (apiKey: string, customerId: string) => {
+  return await client<ColormeCustomerResponse>(apiKey, '/v1/customers', 'GET', {
+    paths: [customerId],
+  });
 };

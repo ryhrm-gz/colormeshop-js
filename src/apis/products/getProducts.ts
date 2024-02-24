@@ -1,18 +1,11 @@
-import {
-  ColormeGetProductsParams,
-  ColormeMeta,
-  ColormeProductResponse,
-} from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeGetProductsQuery, ColormeProductsResponse } from '../../types';
 
 export const getProducts = async (
-  client: any,
-  params?: ColormeGetProductsParams
-): Promise<{ products: ColormeProductResponse[]; meta: ColormeMeta }> => {
-  try {
-    const response = await client.get("products", { params });
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+  apiKey: string,
+  query?: ColormeGetProductsQuery
+) => {
+  return await client<ColormeProductsResponse>(apiKey, '/v1/products', 'GET', {
+    query,
+  });
 };

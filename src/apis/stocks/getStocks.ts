@@ -1,18 +1,6 @@
-import {
-  ColormeGetStocksParams,
-  ColormeMeta,
-  ColormeStockResponse,
-} from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeStocksResponse } from '../../types';
 
-export const getStocks = async (
-  client: any,
-  params?: ColormeGetStocksParams
-): Promise<{ stocks: ColormeStockResponse[]; meta: ColormeMeta }> => {
-  try {
-    const response = await client.get("stocks", { params });
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getStocks = async (apiKey: string) => {
+  return await client<ColormeStocksResponse>(apiKey, '/v1/stocks', 'GET');
 };

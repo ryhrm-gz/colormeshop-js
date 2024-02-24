@@ -1,13 +1,6 @@
-import { ColormePaymentResponse } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormePaymentsResponse } from '../../types';
 
-export const getPayments = async (
-  client: any
-): Promise<{ payments: ColormePaymentResponse[] }> => {
-  try {
-    const response = await client.get("payments");
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+export const getPayments = async (apiKey: string) => {
+  return await client<ColormePaymentsResponse>(apiKey, '/v1/payments', 'GET');
 };

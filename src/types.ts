@@ -4,7 +4,7 @@ export type ColormeShopResponse = Required<
   operations['getShop']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeGetSalesParameters = NonNullable<
+export type ColormeGetSalesQuery = NonNullable<
   operations['getSales']['parameters']['query']
 >;
 
@@ -12,7 +12,7 @@ export type ColormeSalesResponse = Required<
   operations['getSales']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeStatSaleParameters = NonNullable<
+export type ColormeStatSaleQuery = NonNullable<
   operations['statSale']['parameters']['query']
 >;
 
@@ -42,7 +42,7 @@ export type ColormeSendSalesMailRequestBody = Required<
   >['content']['application/json']
 >;
 
-export type ColormeGetCustomersParameters = NonNullable<
+export type ColormeGetCustomersQuery = NonNullable<
   operations['getCustomers']['parameters']['query']
 >;
 
@@ -60,7 +60,7 @@ export type ColormeCustomerResponse = Required<
   operations['getCustomer']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeGetProductsParameters = NonNullable<
+export type ColormeGetProductsQuery = NonNullable<
   operations['getProducts']['parameters']['query']
 >;
 
@@ -84,7 +84,7 @@ export type ColormeUpdateProductRequestBody = Required<
   >['content']['application/json']
 >;
 
-export type ColormeGetProductVariantsParameters = NonNullable<
+export type ColormeGetProductVariantsQuery = NonNullable<
   operations['getProductVariants']['parameters']['query']
 >;
 
@@ -92,23 +92,19 @@ export type ColormeProductVariantsResponse = Required<
   operations['getProductVariants']['responses']['200']['content']['application/json']
 >;
 
-export type ColormePostProductPickupRequestBody = Required<
-  NonNullable<
-    operations['postProductPickup']['requestBody']
-  >['content']['application/json']
->;
+export type ColormePostProductPickupRequestBody = NonNullable<
+  operations['postProductPickup']['requestBody']
+>['content']['application/json'];
 
-export type ColormePutProductPickupRequestBody = Required<
-  NonNullable<
-    operations['putProductPickup']['requestBody']
-  >['content']['application/json']
->;
+export type ColormePutProductPickupRequestBody = NonNullable<
+  operations['putProductPickup']['requestBody']
+>['content']['application/json'];
 
 export type ColormeProductPickupResponse = Required<
   operations['putProductPickup']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeGetStocksParameters = NonNullable<
+export type ColormeGetStocksQuery = NonNullable<
   operations['getStocks']['parameters']['query']
 >;
 
@@ -136,24 +132,24 @@ export type ColormeDeliveryDateSettingResponse = Required<
   operations['getDeliveryDateSetting']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeGiftResponse = Required<
+export type ColormeGiftSettingResponse = Required<
   operations['getGift']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeCouponsResponse = Required<
+export type ColormeShopCouponsResponse = Required<
   operations['getCoupons']['responses']['200']['content']['application/json']
 >;
 
-export type ColormeCouponResponse = Required<
+export type ColormeShopCouponResponse = Required<
   operations['getCoupon']['responses']['200']['content']['application/json']
 >;
 
 export type ColormeErrorResponse = {
-  errors?: [
+  errors: [
     {
-      code?: number;
-      message?: string;
-      status?: number;
+      code: number;
+      message: string;
+      status: number;
     }
   ];
 };

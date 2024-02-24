@@ -1,14 +1,11 @@
-import { ColormeGetSalesParams, ColormeSaleResponse, ColormeMeta } from "../..";
-import { errorHandler } from "../errorHandler";
+import { client } from '../../client';
+import { ColormeGetSalesQuery, ColormeSalesResponse } from '../../types';
 
 export const getSales = async (
-  client: any,
-  params?: ColormeGetSalesParams
-): Promise<{ sales: ColormeSaleResponse[]; meta: ColormeMeta }> => {
-  try {
-    const response = await client.get("sales", { params });
-    return response.data;
-  } catch (error) {
-    throw errorHandler(error);
-  }
+  apiKey: string,
+  query?: ColormeGetSalesQuery
+) => {
+  return await client<ColormeSalesResponse>(apiKey, '/v1/sales', 'GET', {
+    query,
+  });
 };
