@@ -1,16 +1,16 @@
-import { ColormeClient } from ".";
-import { createAxiosClient } from "./lib/axiosClient";
-import { createSales } from "./lib/sales";
-import { createShop } from "./lib/shop";
-import { createCustomers } from "./lib/customers";
-import { createProducts } from "./lib/products";
-import { createStocks } from "./lib/stocks";
-import { createGroups } from "./lib/groups";
-import { createCategories } from "./lib/categories";
-import { creatgePayments } from "./lib/payments";
-import { createDeliveries } from "./lib/deliveries";
-import { createGift } from "./lib/gift";
-import { createCoupons } from "./lib/coupons";
+import { ColormeClient } from '.';
+import { createAxiosClient } from './apis/axiosClient';
+import { createSales } from './apis/sales';
+import { createShop } from './apis/shop';
+import { createCustomers } from './apis/customers';
+import { createProducts } from './apis/products';
+import { createStocks } from './apis/stocks';
+import { createGroups } from './apis/groups';
+import { createCategories } from './apis/categories';
+import { creatgePayments } from './apis/payments';
+import { createDeliveries } from './apis/deliveries';
+import { createGift } from './apis/gift';
+import { createCoupons } from './apis/coupons';
 
 export const createClient = ({ accessToken }: ColormeClient) => {
   const client = createAxiosClient({ accessToken });
