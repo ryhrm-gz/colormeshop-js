@@ -147,3 +147,13 @@ export type ColormeCouponsResponse = Required<
 export type ColormeCouponResponse = Required<
   operations['getCoupon']['responses']['200']['content']['application/json']
 >;
+
+export type ColormeErrorResponse = {
+  errors?: [
+    {
+      code?: number;
+      message?: string;
+      status?: number;
+    }
+  ];
+};
