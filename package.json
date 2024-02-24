@@ -1,8 +1,8 @@
 {
   "name": "colormeshop-js",
-  "description": "JavaScript client for ColoeMeShop API",
+  "description": "JavaScript client for Colorme Shop API",
   "version": "0.4.1",
-  "author": "Ryo Hirama",
+  "author": "ryhrm-gz",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,33 +13,29 @@
     "TypeScript",
     "Colorme"
   ],
-  "main": "./dist/colormeshop-js.umd.js",
-  "module": "./dist/colormeshop-js.es.js",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/colormeshop-js.es.js",
-      "require": "./dist/colormeshop-js.umd.js"
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
     }
   },
-  "types": "./types/index.d.ts",
   "files": [
-    "/dist",
-    "/types"
+    "/dist"
   ],
   "scripts": {
-    "build": "tsc --noEmit && vite build",
-    "test": "vitest"
+    "build": "tsc --noEmit && pnpm run build:types && pnpm run build:esm && pnpm run build:cjs",
+    "build:types": "tsc -declaration --emitDeclarationOnly --declarationDir ./dist",
+    "build:esm": "esbuild --bundle src/index.ts --format=esm --minify --outfile=dist/index.esm.js",
+    "build:cjs": "esbuild --bundle src/index.ts --format=cjs --minify --outfile=dist/index.cjs.js",
+    "generate": "openapi-typescript https://api.shop-pro.jp/v1/spec/open_api.json -o ./src/generated/types.gen.ts"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/node": "^18.11.15",
-    "dotenv": "^16.0.3",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.1",
-    "vitest": "^0.25.8"
-  },
-  "dependencies": {
-    "redaxios": "^0.5.1",
-    "axios": "^1.2.1"
+    "@types/node": "^20.11.17",
+    "esbuild": "^0.20.1",
+    "openapi-typescript": "^6.7.4",
+    "typescript": "^5.3.3"
   }
 }
