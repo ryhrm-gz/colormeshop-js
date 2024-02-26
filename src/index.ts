@@ -26,3 +26,4 @@ export { getShop } from './apis/shop/getShop';
 export { getShopCoupon } from './apis/shop-coupons/getShopCoupon';
 export { getShopCoupons } from './apis/shop-coupons/getShopCoupons';
 export { getStocks } from './apis/stocks/getStocks';
+export { initializeClient } from './client';
