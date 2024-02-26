@@ -1,14 +1,15 @@
-import { type ColormeClient } from '../../client';
-import {
-  type ColormeCustomersResponse,
-  type ColormeGetCustomersQuery,
+import type { ColormeClient } from '../../client';
+import type {
+  ColormeResponse,
+  ColormeCustomersResponse,
+  ColormeGetCustomersQuery,
 } from '../../types';
 
 export const getCustomers = async (
   client: ColormeClient,
   query?: ColormeGetCustomersQuery
-) => {
-  return await client<ColormeCustomersResponse>('/v1/customers', 'GET', {
+): ColormeResponse<ColormeCustomersResponse> => {
+  return await client('/v1/customers', 'GET', {
     query,
   });
 };

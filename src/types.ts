@@ -153,3 +153,8 @@ export type ColormeErrorResponse = {
     }
   ];
 };
+
+export type ColormeResponse<T> = Promise<{
+  data: T | null;
+  error: ColormeErrorResponse | null;
+}>;

@@ -1,5 +1,6 @@
 import { type ColormeClient } from '../../client';
 import type {
+  ColormeResponse,
   ColormeStatSaleQuery,
   ColormeStatSaleResponse,
 } from '../../types';
@@ -7,8 +8,8 @@ import type {
 export const getStatSales = async (
   client: ColormeClient,
   query?: ColormeStatSaleQuery
-) => {
-  return await client<ColormeStatSaleResponse>('/v1/sales/stat', 'GET', {
+): ColormeResponse<ColormeStatSaleResponse> => {
+  return await client('/v1/sales/stat', 'GET', {
     query,
   });
 };

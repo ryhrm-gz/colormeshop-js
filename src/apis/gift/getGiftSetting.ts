@@ -1,6 +1,11 @@
 import { type ColormeClient } from '../../client';
-import { type ColormeGiftSettingResponse } from '../../types';
+import {
+  type ColormeResponse,
+  type ColormeGiftSettingResponse,
+} from '../../types';
 
-export const getGiftSetting = async (client: ColormeClient) => {
-  return await client<ColormeGiftSettingResponse>('/v1/gift', 'GET');
+export const getGiftSetting = async (
+  client: ColormeClient
+): ColormeResponse<ColormeGiftSettingResponse> => {
+  return await client('/v1/gift', 'GET');
 };
