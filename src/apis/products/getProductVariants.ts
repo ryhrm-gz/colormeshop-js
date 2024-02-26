@@ -1,21 +1,16 @@
-import { client } from '../../client';
+import { type ColormeClient } from '../../client';
 import {
-  ColormeGetProductVariantsQuery,
-  ColormeProductVariantsResponse,
+  type ColormeGetProductVariantsQuery,
+  type ColormeProductVariantsResponse,
 } from '../../types';
 
 export const getProductVariants = async (
-  apiKey: string,
+  client: ColormeClient,
   productId: string,
   query?: ColormeGetProductVariantsQuery
 ) => {
-  return await client<ColormeProductVariantsResponse>(
-    apiKey,
-    '/v1/products',
-    'GET',
-    {
-      paths: [productId, 'variants'],
-      query,
-    }
-  );
+  return await client<ColormeProductVariantsResponse>('/v1/products', 'GET', {
+    paths: [productId, 'variants'],
+    query,
+  });
 };

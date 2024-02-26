@@ -1,16 +1,14 @@
-import { client } from '../../client';
-import { ColormeStatSaleQuery, ColormeStatSaleResponse } from '../../types';
+import { type ColormeClient } from '../../client';
+import type {
+  ColormeStatSaleQuery,
+  ColormeStatSaleResponse,
+} from '../../types';
 
 export const getStatSales = async (
-  apiKey: string,
+  client: ColormeClient,
   query?: ColormeStatSaleQuery
 ) => {
-  return await client<ColormeStatSaleResponse>(
-    apiKey,
-    '/v1/sales/stat',
-    'GET',
-    {
-      query,
-    }
-  );
+  return await client<ColormeStatSaleResponse>('/v1/sales/stat', 'GET', {
+    query,
+  });
 };

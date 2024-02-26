@@ -1,21 +1,16 @@
-import { client } from '../../client';
+import { type ColormeClient } from '../../client';
 import {
-  ColormeProductPickupResponse,
-  ColormePutProductPickupRequestBody,
+  type ColormeProductPickupResponse,
+  type ColormePutProductPickupRequestBody,
 } from '../../types';
 
 export const postProductPickup = async (
-  apiKey: string,
+  client: ColormeClient,
   productId: string,
   body: ColormePutProductPickupRequestBody
 ) => {
-  return await client<ColormeProductPickupResponse>(
-    apiKey,
-    '/v1/products',
-    'POST',
-    {
-      paths: [productId, 'pickups'],
-      body,
-    }
-  );
+  return await client<ColormeProductPickupResponse>('/v1/products', 'POST', {
+    paths: [productId, 'pickups'],
+    body,
+  });
 };

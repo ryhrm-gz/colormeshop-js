@@ -1,9 +1,8 @@
-import { client } from '../../client';
-import { ColormeDeliveryDateSettingResponse } from '../../types';
+import { type ColormeClient } from '../../client';
+import { type ColormeDeliveryDateSettingResponse } from '../../types';
 
-export const getDeliveryDateSetting = async (apiKey: string) => {
+export const getDeliveryDateSetting = async (client: ColormeClient) => {
   return await client<ColormeDeliveryDateSettingResponse>(
-    apiKey,
     '/v1/deliveries/date',
     'GET'
   );

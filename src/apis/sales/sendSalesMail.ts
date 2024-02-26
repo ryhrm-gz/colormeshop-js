@@ -1,11 +1,11 @@
-import { client } from '../../client';
-import { ColormeSendSalesMailRequestBody } from '../../types';
+import { type ColormeClient } from '../../client';
+import { type ColormeSendSalesMailRequestBody } from '../../types';
 export const sendSalesMail = async (
-  apiKey: string,
+  client: ColormeClient,
   saleId: string,
   body: ColormeSendSalesMailRequestBody
 ) => {
-  return await client(apiKey, '/v1/sales', 'POST', {
+  return await client('/v1/sales', 'POST', {
     paths: [saleId, 'mails'],
     body,
   });

@@ -1,6 +1,6 @@
-import { client } from '../../client';
-import { ColormePaymentsResponse } from '../../types';
+import { type ColormeClient } from '../../client';
+import { type ColormePaymentsResponse } from '../../types';
 
-export const getPayments = async (apiKey: string) => {
-  return await client<ColormePaymentsResponse>(apiKey, '/v1/payments', 'GET');
+export const getPayments = async (client: ColormeClient) => {
+  return await client<ColormePaymentsResponse>('/v1/payments', 'GET');
 };

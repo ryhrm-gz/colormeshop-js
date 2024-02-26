@@ -1,10 +1,6 @@
-import { client } from '../../client';
-import { ColormeShopCouponsResponse } from '../../types';
+import { type ColormeClient } from '../../client';
+import { type ColormeShopCouponsResponse } from '../../types';
 
-export const getShopCoupons = async (apiKey: string) => {
-  return await client<ColormeShopCouponsResponse>(
-    apiKey,
-    '/v1/shop_coupons',
-    'GET'
-  );
+export const getShopCoupons = async (client: ColormeClient) => {
+  return await client<ColormeShopCouponsResponse>('/v1/shop_coupons', 'GET');
 };

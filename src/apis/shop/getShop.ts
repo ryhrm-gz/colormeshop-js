@@ -1,6 +1,6 @@
-import { ColormeShopResponse } from '../..';
-import { client } from '../../client';
+import { type ColormeShopResponse } from '../..';
+import { type ColormeClient } from '../../client';
 
-export const getShop = async (apiKey: string) => {
-  return await client<ColormeShopResponse>(apiKey, '/v1/shop', 'GET');
+export const getShop = async (client: ColormeClient) => {
+  return await client<ColormeShopResponse>('/v1/shop', 'GET');
 };

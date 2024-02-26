@@ -1,8 +1,8 @@
-import { client } from '../../client';
-import { ColormeSaleResponse } from '../../types';
+import { type ColormeClient } from '../../client';
+import { type ColormeSaleResponse } from '../../types';
 
-export const cancelSale = async (apiKey: string, saleId: string) => {
-  return await client<ColormeSaleResponse>(apiKey, '/v1/sales', 'PUT', {
+export const cancelSale = async (client: ColormeClient, saleId: string) => {
+  return await client<ColormeSaleResponse>('/v1/sales', 'PUT', {
     paths: [saleId, 'cancel'],
   });
 };

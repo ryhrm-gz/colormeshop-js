@@ -1,15 +1,15 @@
-import { client } from '../../client';
-import {
+import { type ColormeClient } from '../../client';
+import type {
   ColormeProductResponse,
   ColormeUpdateProductRequestBody,
 } from '../../types';
 
 export const updateProduct = async (
-  apiKey: string,
+  client: ColormeClient,
   productId: string,
   body: ColormeUpdateProductRequestBody
 ) => {
-  return await client<ColormeProductResponse>(apiKey, '/v1/products', 'PUT', {
+  return await client<ColormeProductResponse>('/v1/products', 'PUT', {
     paths: [productId],
     body,
   });
