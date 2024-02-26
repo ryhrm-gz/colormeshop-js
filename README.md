@@ -9,7 +9,14 @@ ColormeShop API Document: https://developer.shop-pro.jp/docs/colorme-api
 ## How to use
 
 ```javascript
-import { getProducts } from 'colormeshop-js';
+import { getProducts, initializeClient } from 'colormeshop-js';
 
-const { data, error } = await getProducts('your-api-key');
+const client = initializeClient('your-api-key', {
+  overrideBaseUrl?: 'https://xxx.xxx.xxx.xxx',
+});
+
+const { data, error } = await getProducts(client,{
+  limit: 10,
+  offset: 0
+});
 ```
